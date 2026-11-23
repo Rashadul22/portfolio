@@ -120,6 +120,7 @@ html:not(.intro-seen) [data-rise] { animation-delay: calc(var(--i, 0) * 90ms + 1
 
 @media (max-width: 760px) {
   .chapter { height: 130vh; }
+  .hotspots { display: none; }
   .blueprint { display: none; }
   .bubbles { height: 380px; }
   .bubble { font-size: 11px; }
