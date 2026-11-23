@@ -10,6 +10,7 @@ import '@fontsource/jetbrains-mono/latin-400.css'
 import '@fontsource/jetbrains-mono/latin-500.css'
 import './styles.css'
 import './sections.css'
+import './fx.css'
 
 // The production build pre-renders the page into #root (scripts/prerender.mjs); hydrate it if present.
 const root = document.getElementById('root')

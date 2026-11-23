@@ -69,6 +69,23 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
   brief (ConvNeXt-Small trimodal 0.837 vs ConvNeXt-Tiny 0.923); per-form robustness numbers if they want the 9 bars;
   final paper titles.
 
+### Home page interactions (branch `home-fx`, 2026-11-23) — built + verified, NOT pushed yet
+- User feedback: home page "didn't change"; wants reel-style interaction/effects/animation on the main page.
+- Built: `src/three/MorphField.jsx` + `shapes.js` — one fixed full-screen GPU particle field (9k desktop / 4.2k
+  mobile) that morphs on scroll: ECG traces (hero) -> heart (thesis card) -> DNA helix (NASA card) -> planet + ring
+  (credentials) -> star field (contact); points shy away from the cursor; pauses when tab hidden. Anchors = section
+  selectors in ANCHORS; placement in PLACE.
+- `src/components/fx.jsx`: SplitTitle (word-by-word mask reveal on section titles), CountUp (numbers count up),
+  usePointerFx (3D tilt + glare on [data-tilt] cards, magnetic [data-magnetic] buttons, cursor ring; desktop mouse
+  only), useSmoothScroll (Lenis 1.1.18, lazy, desktop only; needs the html.lenis CSS in fx.css).
+- `src/components/SkillBubbles.jsx`: draggable/throwable physics bubbles of 20 tools (custom physics, auto-sized to
+  ~38% of the box); reduced motion -> static pills. Hero: scroll cue; 2nd button -> interactive thesis.
+- Old `src/three/EcgScene.jsx` removed. Cards on frosted glass for readability over particles.
+- Verified (dev, 1280 + 375): all five shapes appear at the right sections; drag/throw works; no horizontal scroll.
+  Lighthouse prod build home: desktop 100/100/100/100; mobile 96/100/100/100 (2 runs); CLS 0.
+- Browser-pane caveat: when hidden it throttles rAF/CSS animations, so screenshots can look empty/mid-animation;
+  check element state with JS before assuming a bug.
+
 ## DEPLOYED — LIVE at https://www.rashadul.me (2026-11-23, user said "Yes, deploy")
 - HOSTING FACT: rashadul.me is served by **Vercel**, connected to this repo; every push to `main` deploys
   automatically (~15 s). rashadul.me redirects to www.rashadul.me. Pages: `/` and `/thesis/`.

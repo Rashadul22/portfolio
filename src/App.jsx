@@ -1,7 +1,10 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import { Research, Publications, About, Credentials, Contact, Footer } from './components/Sections.jsx'
+import { usePointerFx, useSmoothScroll } from './components/fx.jsx'
+
+const MorphField = lazy(() => import('./three/MorphField.jsx'))
 
 function useReveal() {
   useEffect(() => {
@@ -21,10 +24,26 @@ function useReveal() {
   }, [])
 }
 
+// 3D field starts when the browser is idle (text paints first; never during pre-render)
+function useIdleMount() {
+  const [on, setOn] = useState(false)
+  useEffect(() => {
+    if (!document.createElement('canvas').getContext('webgl2')) return
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 500))
+    const id = idle(() => setOn(true), { timeout: 2000 })
+    return () => (window.cancelIdleCallback || clearTimeout)(id)
+  }, [])
+  return on
+}
+
 export default function App() {
   useReveal()
+  usePointerFx()
+  useSmoothScroll()
+  const field = useIdleMount()
   return (
     <>
+      {field && <Suspense fallback={null}><MorphField /></Suspense>}
       <a className="skip" href="#main">Skip to content</a>
       <Nav />
       <main id="main">

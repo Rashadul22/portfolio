@@ -1,12 +1,14 @@
 import {
   profile, education, research, publications, skills, credentials, languages, beyond, community,
 } from '../content.js'
+import { SplitTitle, CountUp } from './fx.jsx'
+import SkillBubbles from './SkillBubbles.jsx'
 
 function Head({ id, kicker, title }) {
   return (
     <header className="sec__head reveal">
       <p className="kicker">{kicker}</p>
-      <h2 id={id} className="sec__title">{title}</h2>
+      <SplitTitle id={id} className="sec__title" text={title} />
     </header>
   )
 }
@@ -17,7 +19,8 @@ export function Research() {
       <Head id="research-title" kicker="01 · Research" title="Selected projects" />
       <div className="projects">
         {research.map((p) => (
-          <article className="project reveal" key={p.title}>
+          <article className="project reveal" key={p.title} data-tilt>
+            <span className="glare" aria-hidden="true" />
             <p className="project__tag">{p.tag}</p>
             <h3 className="project__title">{p.title}</h3>
             <p className="project__summary">{p.summary}</p>
@@ -25,7 +28,7 @@ export function Research() {
               {p.metrics.map(([v, l]) => (
                 <div className="metric" key={l}>
                   <dt>{l}</dt>
-                  <dd>{v}</dd>
+                  <dd><CountUp value={v} /></dd>
                 </div>
               ))}
             </dl>
@@ -42,7 +45,7 @@ export function Research() {
                     {p.link[0]} <span aria-hidden="true">↗</span>
                   </a>
                 ) : (
-                  <a className="arrow-link arrow-link--cta" href={p.link[1]}>{p.link[0]} <span aria-hidden="true">→</span></a>
+                  <a className="arrow-link arrow-link--cta" href={p.link[1]} data-magnetic>{p.link[0]} <span aria-hidden="true">→</span></a>
                 )
               )}
             </div>
@@ -123,6 +126,10 @@ export function About() {
             </dl>
           </div>
         </div>
+        <div className="toolbox reveal">
+          <h3 className="sub">Toolbox</h3>
+          <SkillBubbles />
+        </div>
       </div>
     </section>
   )
@@ -134,7 +141,8 @@ export function Credentials() {
       <Head id="cred-title" kicker="04 · Credentials" title="Memberships, awards and service" />
       <ul className="cards">
         {credentials.map(([t, d]) => (
-          <li className="card reveal" key={t}>
+          <li className="card reveal" key={t} data-tilt>
+            <span className="glare" aria-hidden="true" />
             <h3 className="card__title">{t}</h3>
             <p className="card__text">{d}</p>
           </li>
@@ -176,7 +184,7 @@ export function Contact() {
         Looking for research assistant roles, Master&apos;s / PhD positions and collaborations in machine learning for
         healthcare. Based in {profile.location}.
       </p>
-      <a className="btn btn--primary btn--lg reveal" href={`mailto:${profile.email}`}>Email me</a>
+      <a className="btn btn--primary btn--lg reveal" href={`mailto:${profile.email}`} data-magnetic>Email me</a>
       <ul className="links reveal">
         {rows.map(([k, v, href]) => (
           <li key={k}>

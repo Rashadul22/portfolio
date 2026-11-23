@@ -1,0 +1,76 @@
+/* Lenis smooth scroll: required base styles (native smooth-scroll must be off while Lenis runs) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Page-wide 3D field (fixed behind everything) ---------- */
+.field { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.nav { z-index: 20; }
+main, .footer { position: relative; z-index: 1; }
+.hero { isolation: auto; }
+.hero__veil { z-index: 0; }
+.hero__inner { position: relative; z-index: 1; }
+
+/* Cards sit on frosted glass so text stays readable over the particles */
+.project, .card { position: relative; background: rgba(12, 19, 38, 0.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.metric { background: rgba(10, 16, 32, 0.85); }
+.pub { background: linear-gradient(90deg, rgba(10,16,32,.75), rgba(10,16,32,.35)); }
+
+/* ---------- Split-word headline reveal ---------- */
+.split__mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.split__word { display: inline-block; }
+.js-reveal .split__word { transform: translateY(110%); transition: transform 1s cubic-bezier(.16,.84,.24,1) var(--d, 0ms); }
+.js-reveal .in .split__word { transform: none; }
+.js-reveal .sec__head.reveal { opacity: 1; transform: none; }
+
+/* ---------- Tilt + glare cards (desktop mouse only) ---------- */
+.fx-on [data-tilt] { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .3s, opacity .8s; will-change: transform; }
+.fx-on [data-tilt].is-tilting { transition: transform .08s linear, border-color .3s; border-color: rgba(91,214,238,.35); }
+.js-reveal .fx-on .reveal[data-tilt]:not(.in) { transform: translateY(20px); }
+.glare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(91,214,238,.10), transparent 40%); }
+.is-tilting .glare { opacity: 1; }
+
+/* Magnetic buttons */
+.fx-on [data-magnetic] { transition: transform .35s cubic-bezier(.2,.7,.2,1), background-color .2s, border-color .2s, color .2s; }
+
+/* Cursor ring */
+.cursor { position: fixed; left: -17px; top: -17px; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(91,214,238,.7);
+  pointer-events: none; z-index: 100; transition: width .25s, height .25s, left .25s, top .25s, background-color .25s, border-color .25s; }
+.cursor.is-link { width: 56px; height: 56px; left: -28px; top: -28px; background: rgba(91,214,238,.10); border-color: rgba(91,214,238,.9); }
+
+/* ---------- Scroll cue ---------- */
+.scrollcue { position: absolute; left: 50%; bottom: 24px; z-index: 1; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font: 500 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--t3); text-decoration: none; }
+.scrollcue i { position: relative; width: 1px; height: 44px; background: rgba(183,196,217,.2); overflow: hidden; }
+.scrollcue i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--accent); animation: cue 1.8s cubic-bezier(.6,0,.4,1) infinite; }
+@keyframes cue { to { top: 100%; } }
+
+/* ---------- Toolbox bubbles ---------- */
+.toolbox { margin-top: 64px; }
+.bubbles { position: relative; height: 440px; border: 1px solid var(--line); border-radius: 18px; background: rgba(12,19,38,.55); overflow: hidden; touch-action: pan-y; }
+.bubbles ul { list-style: none; margin: 0; padding: 0; }
+.bubble { display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 50%; font: 500 13px var(--sans); color: var(--t1);
+  background: radial-gradient(circle at 30% 25%, rgba(91,214,238,.35), rgba(91,214,238,.08) 60%, rgba(91,214,238,.04));
+  border: 1px solid rgba(91,214,238,.35); box-shadow: inset 0 0 18px rgba(91,214,238,.12); user-select: none; -webkit-user-select: none; }
+.bubble--w3 { font-size: 16px; font-weight: 600; background: radial-gradient(circle at 30% 25%, rgba(91,214,238,.6), rgba(47,140,170,.3) 60%, rgba(47,140,170,.12)); }
+.bubble--w2 { font-size: 14px; }
+.bubbles--physics .bubble { position: absolute; left: 0; top: 0; cursor: grab; touch-action: none; transform: translate(-200px, -200px); padding: 4px; line-height: 1.15; }
+.bubbles--physics.is-dragging .bubble { cursor: grabbing; }
+.bubbles--static { height: auto; padding: 20px; }
+.bubbles--static ul { display: flex; flex-wrap: wrap; gap: 10px; }
+.bubbles--static .bubble { border-radius: 999px; padding: 8px 14px; }
+.bubbles__hint { position: absolute; right: 16px; top: 12px; margin: 0; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--t3); pointer-events: none; }
+
+@media (max-width: 760px) {
+  .bubbles { height: 380px; }
+  .bubble { font-size: 11px; }
+  .bubble--w3 { font-size: 13px; }
+  .bubble--w2 { font-size: 12px; }
+  .scrollcue { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .split__word { transform: none !important; }
+  .scrollcue i::after { display: none; }
+}
