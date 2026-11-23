@@ -86,7 +86,8 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
 - Browser-pane caveat: when hidden it throttles rAF/CSS animations, so screenshots can look empty/mid-animation;
   check element state with JS before assuming a bug.
 
-### Chapters part (branch `chapters`, 2026-11-23) — built + verified, NOT live yet
+### Chapters part (2026-11-23) — LIVE on www.rashadul.me (user said "Yes, make it live"; merged chapters -> main)
+- Follow-up fix live: hotspots hidden under 760 px (also for desktop windows narrowed after load).
 - `src/components/Chapter.jsx`: 4 pinned interludes (CSS sticky, 170vh desktop / 130vh phone); the morph between
   acts now runs only inside chapters ([data-chapter] anchors in MorphField), so title and camera move together.
   Order: Hero · Ch1 · Research (Ch2 sits between project 2 and 3) · Publications · About · Ch3 · Credentials · Ch4 · Contact.
