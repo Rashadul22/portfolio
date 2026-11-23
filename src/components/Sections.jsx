@@ -3,6 +3,8 @@ import {
 } from '../content.js'
 import { SplitTitle, CountUp } from './fx.jsx'
 import SkillBubbles from './SkillBubbles.jsx'
+import { Fragment } from 'react'
+import Chapter, { CHAPTERS } from './Chapter.jsx'
 
 function Head({ id, kicker, title }) {
   return (
@@ -18,8 +20,10 @@ export function Research() {
     <section className="sec" id="research" aria-labelledby="research-title">
       <Head id="research-title" kicker="01 · Research" title="Selected projects" />
       <div className="projects">
-        {research.map((p) => (
-          <article className="project reveal" key={p.title} data-tilt>
+        {research.map((p, i) => (
+          <Fragment key={p.title}>
+          {i === 2 && <Chapter {...CHAPTERS[1]} />}
+          <article className="project reveal" data-tilt>
             <span className="glare" aria-hidden="true" />
             <p className="project__tag">{p.tag}</p>
             <h3 className="project__title">{p.title}</h3>
@@ -50,6 +54,7 @@ export function Research() {
               )}
             </div>
           </article>
+          </Fragment>
         ))}
       </div>
     </section>

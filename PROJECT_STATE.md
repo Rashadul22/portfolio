@@ -86,7 +86,17 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
 - Browser-pane caveat: when hidden it throttles rAF/CSS animations, so screenshots can look empty/mid-animation;
   check element state with JS before assuming a bug.
 
-### Cinematic upgrade (branch `cinematic`, 2026-11-23) — sample built + verified, NOT live yet
+### Chapters part (branch `chapters`, 2026-11-23) — built + verified, NOT live yet
+- `src/components/Chapter.jsx`: 4 pinned interludes (CSS sticky, 170vh desktop / 130vh phone); the morph between
+  acts now runs only inside chapters ([data-chapter] anchors in MorphField), so title and camera move together.
+  Order: Hero · Ch1 · Research (Ch2 sits between project 2 and 3) · Publications · About · Ch3 · Credentials · Ch4 · Contact.
+- DNA flight: while act 2 holds (Ch2 end -> Ch3 start) the helix turns 270° and slides; 5 gene hotspots
+  (Ucp1 12.21× up, Angpt2, Jun, Irs2, Klf2) fade out when behind the helix; helix dimmed and pushed right (x 4.6).
+- Blueprint hero: ECG drawn left to right by a "pen" in white-blue, then inked to cyan; FIG. 01 caption + corner
+  marks (CSS) fade out. Starts after the intro on first visit.
+- Lighthouse prod: desktop 100/100/100/100; mobile 95/100/100/100 (2 runs); CLS 0.
+
+### Cinematic upgrade (2026-11-23) — LIVE (merged to main, user said "Live + next part")
 - User asked: research trends first, then build top-level 3D/interaction. Research: `notes/design-research.md`
   (sources, jury criteria, hands-on Oryzo/Minh Pham, verdict on our page, the one idea, fixed checks).
 - One idea: "From a heartbeat to the stars". Built so far: camera travels between acts and dives through each morph;

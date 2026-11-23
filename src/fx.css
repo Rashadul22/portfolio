@@ -40,6 +40,33 @@ main, .footer { position: relative; z-index: 1; }
   pointer-events: none; z-index: 100; transition: width .25s, height .25s, left .25s, top .25s, background-color .25s, border-color .25s; }
 .cursor.is-link { width: 56px; height: 56px; left: -28px; top: -28px; background: rgba(91,214,238,.10); border-color: rgba(91,214,238,.9); }
 
+/* ---------- Pinned chapter interludes ---------- */
+.chapter { position: relative; z-index: 1; height: 170vh; }
+.projects .chapter { margin: 24px 0; }
+.chapter__pin { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; pointer-events: none; }
+.chapter__inner { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+.projects .chapter__inner { padding: 0; }
+.chapter__n { margin: 0 0 18px; font: 500 13px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.chapter__n span { color: var(--t3); margin-right: 8px; }
+.chapter__title { margin: 0 0 18px; max-width: 12ch; font: 400 clamp(46px, 7.4vw, 108px)/0.98 var(--serif); letter-spacing: -0.025em;
+  text-shadow: 0 2px 30px rgba(10,16,32,.8); }
+.chapter__sub { margin: 0; font: 400 clamp(15px, 1.4vw, 18px) var(--sans); color: var(--t2); }
+.js-reveal .chapter__inner.reveal { opacity: 1; transform: none; }
+.js-reveal .chapter__sub { opacity: 0; transform: translateY(12px); transition: opacity .8s .5s, transform .8s .5s; }
+.js-reveal .in .chapter__sub { opacity: 1; transform: none; }
+
+/* ---------- Blueprint frame (hero, while the ECG is drawn) ---------- */
+.blueprint { position: absolute; z-index: 0; right: clamp(16px, 4vw, 56px); top: 96px; width: min(54vw, 760px); height: calc(100% - 180px);
+  pointer-events: none; opacity: 0; animation: bp 3.4s ease .2s forwards; }
+html:not(.intro-seen) .blueprint { animation-delay: 1.7s; }
+.bp-c { position: absolute; width: 22px; height: 22px; border-color: rgba(191,216,255,.55); border-style: solid; border-width: 0; }
+.bp-tl { left: 0; top: 0; border-left-width: 1px; border-top-width: 1px; }
+.bp-tr { right: 0; top: 0; border-right-width: 1px; border-top-width: 1px; }
+.bp-bl { left: 0; bottom: 0; border-left-width: 1px; border-bottom-width: 1px; }
+.bp-br { right: 0; bottom: 0; border-right-width: 1px; border-bottom-width: 1px; }
+.bp-cap { position: absolute; right: 0; bottom: -26px; font: 500 10px var(--mono); letter-spacing: .16em; color: rgba(191,216,255,.75); }
+@keyframes bp { 0% { opacity: 0; } 15% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+
 /* ---------- 3D hotspots (projected from the scene each frame) ---------- */
 .hotspots { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
 .hotspot { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 10px; opacity: 0; pointer-events: auto;
@@ -92,6 +119,8 @@ html:not(.intro-seen) [data-rise] { animation-delay: calc(var(--i, 0) * 90ms + 1
 .bubbles__hint { position: absolute; right: 16px; top: 12px; margin: 0; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--t3); pointer-events: none; }
 
 @media (max-width: 760px) {
+  .chapter { height: 130vh; }
+  .blueprint { display: none; }
   .bubbles { height: 380px; }
   .bubble { font-size: 11px; }
   .bubble--w3 { font-size: 13px; }
@@ -100,6 +129,9 @@ html:not(.intro-seen) [data-rise] { animation-delay: calc(var(--i, 0) * 90ms + 1
 }
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none; }
+  .blueprint { display: none; }
+  .chapter { height: auto; }
+  .chapter__pin { position: static; height: auto; padding: 80px 0; }
   .split__word { transform: none !important; }
   .scrollcue i::after { display: none; }
 }

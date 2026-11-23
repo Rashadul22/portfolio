@@ -7,17 +7,11 @@ import { makeShapes } from './shapes.js'
 // through five acts (ECG -> heart -> DNA -> planet -> stars). The ECG R-peak drives a shared heartbeat: the heart
 // contracts and the glow pulses on every beat. Labelled hotspots link the 3D back to the content.
 
-const ANCHORS = [
-  ['#main', 0],
-  ['.project:nth-child(1)', 1],
-  ['.project:nth-child(3)', 2],
-  ['#credentials', 3],
-  ['#contact', 4],
-]
+// Morphs happen inside the pinned chapter interludes ([data-chapter] 1..4): chapter k carries act k-1 -> act k.
 // shape placement (desktop): x, y, scale
-const PLACE = [[2.2, 0.1, 1.0], [3.0, 0.2, 0.72], [3.3, 0, 0.8], [3.0, 0.2, 0.85], [0, 0, 1.0]]
+const PLACE = [[2.2, 0.1, 1.0], [3.0, 0.2, 0.72], [4.6, 0, 0.62], [3.0, 0.2, 0.85], [0, 0, 1.0]]
 // camera distance per act; transitions add a forward "dive" through the morph
-const CAM_Z = [9, 7.4, 8.2, 8.6, 9.5]
+const CAM_Z = [9, 7.4, 7.0, 8.6, 9.5]
 const COLORS = ['#5BD6EE', '#FF5C7A', '#62E3B4', '#7FA8FF', '#DDE7FF']
 const BPM = 75
 // test hook: ?snap jumps straight to the scroll target (used to screenshot each act)
@@ -27,7 +21,10 @@ const SNAP = typeof location !== 'undefined' && new URLSearchParams(location.sea
 export const HOTSPOTS = [
   { act: 0, p: [4.6, 2.6, 0], t: '12 leads · synthetic ECG', href: 'thesis/' },
   { act: 1, p: [1.6, 2.1, 0.6], t: 'Reading paper ECGs → thesis', href: 'thesis/' },
-  { act: 2, p: [1.4, 1.6, 0.4], t: 'Ucp1 · 12.21× in microgravity', href: '#research' },
+  // genes on the helix strand (NASA OSD-970 findings); they turn with the helix during the DNA flight
+  ...[['Ucp1 · 12.21× up', 2.6], ['Angpt2', 1.2], ['Jun', 0], ['Irs2', -1.2], ['Klf2', -2.6]].map(([t, y]) => ({
+    act: 2, p: [Math.cos(y * 1.15) * 1.2, y, Math.sin(y * 1.15) * 1.2], t, href: '#research', gene: true,
+  })),
   { act: 3, p: [2.4, 1.6, 0], t: 'ISS · RR-1 · 37 days', href: '#research' },
 ]
 
@@ -37,7 +34,7 @@ const beatEnv = (t) => { const ph = (t * BPM / 60) % 1; return Math.exp(-ph * 9)
 const vert = /* glsl */ `
   attribute vec3 p0; attribute vec3 p1; attribute vec3 p2; attribute vec3 p3; attribute vec3 p4;
   attribute float aRand; attribute float aLead;
-  uniform float uStage; uniform float uTime; uniform float uPixel; uniform float uSize; uniform float uBeat; uniform float uGlow;
+  uniform float uStage; uniform float uTime; uniform float uPixel; uniform float uSize; uniform float uBeat; uniform float uGlow; uniform float uReveal; uniform float uInk;
   uniform vec3 uMouse; uniform vec3 uCols[5];
   varying vec3 vColor; varying float vAlpha;
 
@@ -77,6 +74,12 @@ const vert = /* glsl */ `
     float pulse = pow(max(0.0, 1.0 - dd / 0.55), 2.0);
     vAlpha = mix(1.0 + 0.6 * uBeat * heartW, 0.5 + 1.3 * pulse, traceW);
     vColor = mix(uCols[i0], uCols[i1], fp);
+
+    // blueprint reveal (hero only): a pen draws each lead left to right in white-blue, then colour inks in
+    float drawn = step(u, uReveal);
+    float pen = exp(-abs(u - uReveal) * 60.0) * (1.0 - uInk);
+    vAlpha *= mix(1.0, drawn * (0.55 + 0.45 * uInk) + pen * 2.5, traceW);
+    vColor = mix(vColor, mix(vec3(0.78, 0.88, 1.0), vColor, uInk), traceW);
   }
 `
 // In-shader glow: a crisp core plus a soft gaussian halo. With additive blending this reads as bloom,
@@ -103,6 +106,9 @@ function Field({ count, mobile, animate, bloom, hotspotEls }) {
   const anchors = useRef([])
   const mouse = useRef(new THREE.Vector3(99, 99, 0))
   const tmp = useMemo(() => new THREE.Vector3(), [])
+  const tmp2 = useMemo(() => new THREE.Vector3(), [])
+  // the hero ECG starts drawing once the first-visit intro has played
+  const introDelay = useMemo(() => (document.documentElement.classList.contains('intro-seen') ? 0.3 : 1.7), [])
 
   const geo = useMemo(() => {
     const { P, rand, lead } = makeShapes(count)
@@ -118,17 +124,19 @@ function Field({ count, mobile, animate, bloom, hotspotEls }) {
   const uniforms = useMemo(() => ({
     uStage: { value: 0 }, uTime: { value: 0 }, uPixel: { value: 1 }, uSize: { value: mobile ? 40 : 46 }, uBeat: { value: 0 },
     uMouse: { value: new THREE.Vector3(99, 99, 0) }, uFade: { value: mobile ? 0.55 : 0.85 }, uGlow: { value: bloom ? 1 : 0.45 },
-    uCols: { value: COLORS.map((c) => new THREE.Color(c)) },
+    uCols: { value: COLORS.map((c) => new THREE.Color(c)) }, uReveal: { value: 0 }, uInk: { value: 0 },
   }), [mobile, bloom])
 
   useEffect(() => {
+    // each chapter: the morph runs while its pinned title is on screen
     const measure = () => {
-      anchors.current = ANCHORS.map(([sel, st]) => {
-        const el = document.querySelector(sel)
-        if (!el) return null
-        return [Math.max(0, el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.55), st]
-      }).filter(Boolean)
-      if (anchors.current[0]) anchors.current[0][0] = 0
+      const vh = window.innerHeight
+      anchors.current = [...document.querySelectorAll('[data-chapter]')]
+        .sort((p, q) => p.dataset.chapter - q.dataset.chapter)
+        .map((el) => {
+          const top = el.getBoundingClientRect().top + window.scrollY
+          return { start: top - vh * 0.35, end: top + el.offsetHeight - vh * 0.8 }
+        })
     }
     measure()
     const ro = new ResizeObserver(measure)
@@ -143,13 +151,20 @@ function Field({ count, mobile, animate, bloom, hotspotEls }) {
   }, [camera, mobile])
 
   const targetStage = () => {
-    const y = window.scrollY, A = anchors.current
-    if (!A.length || y <= A[0][0]) return 0
-    for (let i = 0; i < A.length - 1; i++) {
-      const [y0, s0] = A[i], [y1, s1] = A[i + 1]
-      if (y < y1) return s0 + ((y - y0) / Math.max(1, y1 - y0)) * (s1 - s0)
+    const y = window.scrollY, C = anchors.current
+    let s = 0
+    for (let k = 0; k < C.length; k++) {
+      if (y >= C[k].end) { s = k + 1; continue }
+      if (y > C[k].start) s = k + (y - C[k].start) / Math.max(1, C[k].end - C[k].start)
+      break
     }
-    return A[A.length - 1][1]
+    return s
+  }
+  // DNA flight progress: 0..1 while act 2 holds (between chapter 2 and chapter 3)
+  const dnaProgress = () => {
+    const C = anchors.current
+    if (C.length < 3) return 0
+    return THREE.MathUtils.clamp((window.scrollY - C[1].end) / Math.max(1, C[2].start - C[1].end), 0, 1)
   }
 
   useFrame((state, dt) => {
@@ -171,10 +186,24 @@ function Field({ count, mobile, animate, bloom, hotspotEls }) {
     const x = mobile ? 0 : a[0] + (b[0] - a[0]) * f
     const y = mobile ? (s < 0.5 ? 0.8 : 0.5) : a[1] + (b[1] - a[1]) * f
     const sc = (a[2] + (b[2] - a[2]) * f) * (mobile ? 0.62 : 1)
-    group.current.position.set(x, y, 0)
+    // DNA flight: while act 2 holds, the helix turns and slides so the camera seems to travel along it
+    const dnaW = Math.max(0, 1 - Math.abs(s - 2) * 2)
+    const dp = dnaProgress()
+    // the helix sits beside long text sections: dim it so the words stay readable
+    u.uFade.value = (mobile ? 0.55 : 0.85) * (1 - 0.45 * dnaW)
+    group.current.position.set(x, y + dnaW * (2.4 - dp * 4.8) * sc, 0)
     group.current.scale.setScalar(sc)
     const traceTilt = Math.max(0, 1 - s)
-    group.current.rotation.set(-0.38 * traceTilt, -0.42 * traceTilt + (1 - traceTilt) * t * 0.18, -0.04 * traceTilt)
+    group.current.rotation.set(
+      -0.38 * traceTilt + dnaW * 0.18,
+      -0.42 * traceTilt + (1 - traceTilt) * t * 0.18 * (1 - dnaW) + dnaW * dp * Math.PI * 1.5,
+      -0.04 * traceTilt,
+    )
+
+    // blueprint reveal of the hero ECG: drawn left to right in white-blue, then inked to colour
+    const since = state.clock.elapsedTime - introDelay
+    u.uReveal.value = animate ? THREE.MathUtils.clamp(since / 1.6, 0, 1) : 1
+    u.uInk.value = animate ? THREE.MathUtils.clamp((since - 1.5) / 0.9, 0, 1) : 1
 
     // camera: travels between acts and dives forward through each morph ("transitions feel like camera moves")
     const dive = animate ? Math.sin(Math.PI * f) * 3.2 : 0
@@ -200,12 +229,21 @@ function Field({ count, mobile, animate, bloom, hotspotEls }) {
       if (w < 0.05) { if (el.dataset.on !== '0') { el.dataset.on = '0'; el.style.opacity = '0'; el.tabIndex = -1 } return }
       tmp.set(...h.p)
       group.current.localToWorld(tmp)
+      // genes behind the helix fade out (depth vs. the helix centre, in camera space)
+      let face = 1
+      if (h.gene) {
+        const zp = tmp.clone().applyMatrix4(camera.matrixWorldInverse).z
+        const zc = group.current.getWorldPosition(tmp2).applyMatrix4(camera.matrixWorldInverse).z
+        face = THREE.MathUtils.clamp((zp - zc) / 0.6 + 0.5, 0, 1)
+      }
       tmp.project(camera)
-      const px = ((tmp.x + 1) / 2) * size.width
-      el.style.transform = `translate(${px}px, ${((1 - tmp.y) / 2) * size.height}px)`
+      const px = ((tmp.x + 1) / 2) * size.width, py = ((1 - tmp.y) / 2) * size.height
+      const vis = w * face * (py > 60 && py < size.height - 20 ? 1 : 0)
+      el.style.transform = `translate(${px}px, ${py}px)`
       el.classList.toggle('hotspot--flip', px > size.width - 300) // label goes left of the dot near the edge
-      el.style.opacity = String(w)
-      if (el.dataset.on !== '1') { el.dataset.on = '1'; el.tabIndex = 0 }
+      el.style.opacity = String(vis)
+      const on = vis > 0.4 ? '1' : '0'
+      if (el.dataset.on !== on) { el.dataset.on = on; el.tabIndex = on === '1' ? 0 : -1 }
     })
 
   })

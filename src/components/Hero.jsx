@@ -6,6 +6,11 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero__veil" aria-hidden="true" />
+      {/* blueprint frame shown while the 3D ECG is being "drawn" (fades once it inks to colour) */}
+      <div className="blueprint" aria-hidden="true">
+        <i className="bp-c bp-tl" /><i className="bp-c bp-tr" /><i className="bp-c bp-bl" /><i className="bp-c bp-br" />
+        <span className="bp-cap">FIG. 01 — 12-LEAD ECG · 25 mm/s · 10 mm/mV · SYNTHETIC</span>
+      </div>
 
       <div className="hero__inner">
         <p className="eyebrow" data-rise style={{ '--i': 0 }}>

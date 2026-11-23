@@ -4,6 +4,7 @@ import Hero from './components/Hero.jsx'
 import { Research, Publications, About, Credentials, Contact, Footer } from './components/Sections.jsx'
 import { usePointerFx, useSmoothScroll } from './components/fx.jsx'
 import Intro from './components/Intro.jsx'
+import Chapter, { CHAPTERS } from './components/Chapter.jsx'
 
 const MorphField = lazy(() => import('./three/MorphField.jsx'))
 
@@ -50,10 +51,13 @@ export default function App() {
       <Nav />
       <main id="main">
         <Hero />
+        <Chapter {...CHAPTERS[0]} />
         <Research />
         <Publications />
         <About />
+        <Chapter {...CHAPTERS[2]} />
         <Credentials />
+        <Chapter {...CHAPTERS[3]} />
         <Contact />
       </main>
       <Footer />
