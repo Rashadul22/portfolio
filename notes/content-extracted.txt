@@ -1,0 +1,274 @@
+Home
+About
+Research
+Papers
+Skills
+Memberships
+Volunteer
+Beyond
+Contact
+Rashadul Islam
+Home
+About
+Research
+Papers
+Skills
+Contact
+Open to Collaboration
+AI Researcher · Dhaka, Bangladesh · 2026
+Md Rashadul Islam
+AI Researcher
+Multimodal Deep Learning · Medical Imaging AI · Space Biology ML
+0
+Papers
+0
+Patients
+0
+arXiv 2026
+0
+IEEE Socs
+PhysioNet Credentialed
+IEEE Student Member
+MIMIC-IV Access
+NASA OSDR
+View Research
+Get in Touch
+0.922
+AUC · NASA OSD-970
+0.837
+Validation AUC · CVD
+12.21×
+Ucp1 Upregulation
+Scroll to explore
+RI
+University · DIU, Dhaka
+Stage · R1 Researcher
+PhysioNet · Credentialed
+IEEE · ID 102042258
+Expected · May 2026
+Profile
+Bridging Data &
+Clinical Impact
+Final-year CSE undergraduate at Daffodil International University , supervised by Dr. Md. Ali Hossain, Director of the NanoBio Technology Center.
+My thesis addresses a real crisis — Bangladesh has fewer than 500 cardiologists for 170 million people. I built a trimodal deep learning system for CVD diagnosis from smartphone photos of paper ECGs, validated cross-nationally.
+First AI/ML analysis of NASA OSD-970 — revealing 12.21-fold Ucp1 upregulation in female astronaut tissue after 37 days aboard the ISS.
+0
+Papers
+0
+Patients
+0
+arXiv 2026
+0
+IEEE Socs
+Featured Work
+Research Projects
+BSc Thesis · Ongoing
+Multimodal CVD Diagnosis from Smartphone-Captured Paper ECGs
+Trimodal late fusion — ConvNeXt-Small CNN + XGBoost-ECG + XGBoost-Clinical — for five-class multi-label CVD classification. Original dataset of 1,191 patients at Enam Medical College, Dhaka. First multimodal smartphone-ECG dataset from Bangladesh. Cross-nationally validated without retraining (Pakistan CPEIC + NHFB Bangladesh).
+0.837
+Val AUC
+0.614
+Macro F1
+0.917
+NHFB AUC
+0.809
+CPEIC AUC
+PyTorch
+ConvNeXt-Small
+XGBoost
+SHAP
+Grad-CAM
+Asymmetric Loss
+SWA
+Adaptive Thresholds
+arXiv:2604.02942 · April 2026
+First AI/ML Analysis of NASA OSD-970 — ISS Microgravity Thermogenesis
+First published ML re-analysis of NASA OSDR dataset OSD-970 (RR-1 ISS mission). RT-qPCR data, 89 genes, 16 female C57BL/6J mice, 37 days microgravity. Revealed 12.21-fold Ucp1 upregulation in WAT. Identified the Angpt2–Jun–Irs2–Klf2 axis via SHAP. Relevant to female astronaut health and obesity research.
+0.922
+AUC LOO-CV
+12.21×
+Ucp1 FC
+0.938
+XGB Acc
+69.1%
+PC1 Var
+Random Forest
+XGBoost
+PyTorch NN
+SHAP
+LOO-CV
+ΔΔCt
+BH-FDR
+PCA
+Academic Output
+Publications & Preprints
+2026
+arXiv · cs.LG
+Explainable ML Reveals 12-Fold Ucp1 Upregulation and Thermogenic Reprogramming in Female Mouse WAT After 37 Days of Microgravity: First AI/ML Analysis of NASA OSD-970
+Md. Rashadul Islam
+·
+arXiv:2604.02942
+·
+April 2026
+2026
+arXiv Preprint
+An Explainable Agentic AI Framework for Uncertainty-Aware and Abstention-Enabled Acute Ischemic Stroke Imaging Decisions
+Md. Rashadul Islam
+·
+arXiv:2601.01008
+·
+January 2026
+2025
+IEEE Conference
+Tomato Maturity Detection and Quality Grading System Using Deep Learning
+Md. Rashadul Islam et al.
+·
+IEEE ICCCNT 2025, IIT Indore
+·
+99.46%
+2025
+Taylor & Francis
+Pneumonia Detection from Chest X-Ray Using Deep Learning: A Comparative Study
+Md. Rashadul Islam et al.
+·
+Advances in Medical Imaging · IDAA 2025
+—
+In Preparation
+Bridging the Generalization Gap in Sepsis Mortality Prediction: Feature-Audited CatBoost with Cross-Database Validation (MIMIC-IV / eICU)
+External validation ongoing
+·
+Preprint submission planned
+Technical Arsenal
+Tools & Technologies
+Core Proficiency
+Python / PyTorch / TensorFlow
+95%
+XGBoost / Gradient Boosting
+90%
+Computer Vision (ConvNeXt, EffNet)
+87%
+SHAP / Grad-CAM Explainability
+92%
+Multi-label Classification & Fusion
+86%
+LaTeX / Research Writing
+88%
+MIMIC-IV
+eICU
+PhysioNet
+NASA OSDR
+PTB-XL
+OpenCV
+albumentations
+Streamlit
+Git
+SQL
+C++
+System Status
+researcher@diu
+domain
+medical_ai + space_biology
+fusion
+trimodal_late_fusion
+xai
+SHAP + GradCAM [active]
+val
+cross_national [PK+BD]
+papers
+4 [2 arXiv + 1 IEEE + 1 T&F]
+thesis
+in_progress
+open
+internship + MSc + collab
+▸
+Research Domains
+Multimodal Late Fusion
+Medical Imaging AI
+Space Biology ML
+LOO-CV
+Asymmetric Loss
+Uncertainty Estimation
+RT-qPCR / ΔΔCt
+BH-FDR
+SWA
+Agentic AI
+Affiliations
+Professional Memberships
+⚡
+IEEE Student Member
+ID: 102042258
+Computer Society · EMBS · Computational Intelligence Society · ComSoc · Information Theory Society
+Active · 5 Societies
+🧬
+PhysioNet Credentialed
+Approved access to MIMIC-IV and eICU clinical databases. Used for ongoing sepsis mortality prediction research.
+Credentialed Researcher
+🌐
+IEEE SIGHT & WIE
+IEEE Special Interest Group on Humanitarian Technology (SIGHT) & Women in Engineering (Affiliate)
+Humanitarian Tech Focus
+Service
+Volunteering & Community
+NanoBio Technology Center · DIU
+Volunteer Research Assistant
+Supporting ongoing laboratory research activities at the NanoBio Technology Center under Dr. Md. Ali Hossain. Co-organised the International Seminar on Smart Nanomaterials: Medicine, Energy, Material Science & AI.
+2025 – Present · Jan 2026 Seminar Organiser
+SCARS · Rajuk Uttara Model College
+Community Volunteer
+Active volunteer for the SCARS initiative — organising winter clothing collection and distribution programs for underprivileged communities in Dhaka.
+Recurring · Seasonal
+Smile More Initiative
+Clothing & Food Distribution
+Volunteer for the "Smile More" community initiative, coordinating clothing and food distribution activities for disadvantaged children across Dhaka.
+Community Service
+The Person Behind the Research
+Beyond The Lab
+🏃
+Marathon Running
+Passionate long-distance runner. Competing in local and regional marathons builds the same discipline and endurance I bring to research — showing up consistently, especially when it's hard.
+⬡ Long-distance · Marathon events
+⚽
+Football
+Football player — team coordination and reading complex play patterns quickly reflects how I approach collaborative research and multi-system problem solving.
+⬡ Team sport · Strategic play
+🔬
+Innovation Drive
+Deeply motivated by discovering what has never been found before — from diagnosing heart disease in rural Bangladesh to uncovering molecular responses aboard the International Space Station.
+⬡ First AI/ML on NASA OSD-970
+🐱
+Animal Lover
+Proud parent of three cats — Choto , Jaba , and Chiku . They keep me grounded between late-night research sessions and remind me that the best things in life are simple.
+⬡ Choto · Jaba · Chiku
+🎬
+Cinema & Storytelling
+Passionate movie watcher — drawn to stories that explore human complexity, technology, and consequence. Good cinema and good research share the same soul: both ask questions that matter.
+⬡ Sci-fi · Drama · Thrillers
+Establish Contact
+Open to
+Collaboration
+Seeking research internships , Masters scholarships , and academic collaborations in AI for healthcare and space biology.
+IEEE Student Member · ID 102042258
+CS · EMBS · CIS · ComSoc · IT Society
+PhysioNet Credentialed · MIMIC-IV + eICU
+Affiliation · Daffodil International University
+Dhaka, Bangladesh · Expected May 2026
+islam15-6062@s.diu.edu.bd
+→
+github.com/Rashadul22
+→
+linkedin.com/in/rashadul-islam-73790a241
+→
+arXiv — 2 Preprints (2026)
+→
+© 2026 Md Rashadul Islam · AI Researcher · Daffodil International University, Dhaka
+Canvas 2D · GSAP · Pure HTML — No dependencies
+
+LINKS:
+https://fonts.googleapis.com
+https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap
+https://arxiv.org/abs/2604.02942
+https://arxiv.org/abs/2601.01008
+mailto:islam15-6062@s.diu.edu.bd
+https://github.com/Rashadul22
+https://www.linkedin.com/in/rashadul-islam-73790a241
+https://arxiv.org/search/?searchtype=author&query=Rashadul+Islam
