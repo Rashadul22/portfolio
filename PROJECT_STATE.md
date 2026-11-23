@@ -69,7 +69,7 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
   brief (ConvNeXt-Small trimodal 0.837 vs ConvNeXt-Tiny 0.923); per-form robustness numbers if they want the 9 bars;
   final paper titles.
 
-### Home page interactions (branch `home-fx`, 2026-11-23) — built + verified, NOT pushed yet
+### Home page interactions (2026-11-23) — LIVE on www.rashadul.me (user said "Yes, make it live"; merged home-fx -> main)
 - User feedback: home page "didn't change"; wants reel-style interaction/effects/animation on the main page.
 - Built: `src/three/MorphField.jsx` + `shapes.js` — one fixed full-screen GPU particle field (9k desktop / 4.2k
   mobile) that morphs on scroll: ECG traces (hero) -> heart (thesis card) -> DNA helix (NASA card) -> planet + ring
