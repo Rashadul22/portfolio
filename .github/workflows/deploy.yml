@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Manual only. The live site is deployed by Vercel to https://rashadul.me on every push to main;
+# GitHub Pages for this repo would redirect to rashadul.me/portfolio/ (user-site custom domain), so it is not used.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

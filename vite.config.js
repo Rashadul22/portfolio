@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// base must match the GitHub Pages repo path: https://rashadul22.github.io/portfolio/
+// Live site: Vercel at https://rashadul.me/ (root). Vercel sets VERCEL=1 during its build.
+// Local dev and the manual GitHub Pages workflow keep the /portfolio/ sub-path.
 export default defineConfig({
-  base: '/portfolio/',
+  base: process.env.VERCEL ? '/' : '/portfolio/',
   plugins: [react()],
   build: {
     target: 'es2020',
