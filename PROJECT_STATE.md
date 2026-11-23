@@ -65,10 +65,21 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
   requestIdleCallback; inactive text uses a 4.5:1 grey, never opacity.
 - Honesty rules applied: per-form robustness scores NOT shown (brief gives only 0.834–0.846); pipeline output values
   and report confidence labelled "illustrative"; dev-CV vs test numbers labelled everywhere.
-- Commits are on branch `thesis-showcase` (brief: commit per step on a branch, push only after yes). Not pushed.
 - STILL TO CONFIRM with user: supervisor name in credits (used CV: Dr. Md. Ali Hossain); CV itself is out of date vs
   brief (ConvNeXt-Small trimodal 0.837 vs ConvNeXt-Tiny 0.923); per-form robustness numbers if they want the 9 bars;
-  final paper titles; deploy (merge to main + push + enable Pages) and rashadul.me domain.
+  final paper titles.
+
+## DEPLOYED — LIVE at https://www.rashadul.me (2026-11-23, user said "Yes, deploy")
+- HOSTING FACT: rashadul.me is served by **Vercel**, connected to this repo; every push to `main` deploys
+  automatically (~15 s). rashadul.me redirects to www.rashadul.me. Pages: `/` and `/thesis/`.
+- Vercel sets VERCEL=1 at build -> vite base '/'. Locally base stays '/portfolio/' (dev URL
+  http://localhost:5173/portfolio/). Before this fix the live site was broken (all assets 404 under /portfolio/).
+- GitHub Pages is NOT used: the user-site repo `rashadul22.github.io` owns the rashadul.me custom domain, so project
+  Pages would redirect to rashadul.me/portfolio/ (not served by Vercel). `deploy.yml` is now manual-only.
+  The user made the repo public and may have touched Pages settings; harmless.
+- Live Lighthouse: home desktop 100/100/100/100, mobile 100/100/100/100; thesis desktop 100/100/100/100,
+  mobile 85/100/100/100; CLS 0 everywhere. Live console: no errors. All assets 200.
+- Git: `main` = live. Branch `thesis-showcase` merged (fast-forward). Pushing to main = publishing: ask first.
 
 ## Where things are
 - Content: `src/content.js` (from CV). Old site text: `notes/content-extracted.txt`.
@@ -80,7 +91,8 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
 - Run: `npm run dev` (open http://localhost:5173/portfolio/) · Build: `npm run build` -> `dist/` (pre-rendered).
 - Test production: `npx vite preview --port 4173` -> http://localhost:4173/portfolio/ ; Lighthouse:
   `npx lighthouse@12.2.1 <url> [--preset=desktop]` (Chrome is installed).
-- Deploy: `.github/workflows/deploy.yml` (Node 20 on GitHub).
+- Deploy: push to `main` -> Vercel -> https://www.rashadul.me (automatic). `.github/workflows/deploy.yml` = manual-only
+  GitHub Pages fallback, not used. To test a root-path build locally: set env VERCEL=1, then `npm run build`.
 - Preview config for Claude: `.claude/launch.json` (name `portfolio-dev`).
 
 ## Rules
