@@ -86,6 +86,21 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
 - Browser-pane caveat: when hidden it throttles rAF/CSS animations, so screenshots can look empty/mid-animation;
   check element state with JS before assuming a bug.
 
+### Cinematic upgrade (branch `cinematic`, 2026-11-23) — sample built + verified, NOT live yet
+- User asked: research trends first, then build top-level 3D/interaction. Research: `notes/design-research.md`
+  (sources, jury criteria, hands-on Oryzo/Minh Pham, verdict on our page, the one idea, fixed checks).
+- One idea: "From a heartbeat to the stars". Built so far: camera travels between acts and dives through each morph;
+  75 bpm heartbeat (R-peak envelope) makes the heart contract and glow; in-shader glow (core + halo, no
+  post-processing; the `postprocessing` lib was tried and dropped: colour-space double-encode lightened the bg);
+  ISS dot orbits the planet; projected 3D hotspots (links, keyboard reachable only when visible, flip near edge,
+  desktop only); first-visit CSS intro (ECG line draws, R-peak, name; sessionStorage skip; reduced motion skip);
+  device tier (phones / <=4 cores / <=4 GB: fewer points, smaller glow).
+- Test hooks: `?snap` (field jumps to scroll target; exposes window.__field), thesis `?freeze`, `?static`.
+- Lighthouse prod home: desktop 100/100/100/100; mobile 95–96/100/100/100; CLS 0; TBT 0.
+- NEXT candidates (from research, in order): GSAP ScrollTrigger pinned chapters so text and camera move together;
+  camera flight along the DNA with gene hotspots; Oryzo-style blueprint-to-real transition of the hero sheet;
+  section transitions that feel like camera moves; audio-off-by-default heartbeat.
+
 ## DEPLOYED — LIVE at https://www.rashadul.me (2026-11-23, user said "Yes, deploy")
 - HOSTING FACT: rashadul.me is served by **Vercel**, connected to this repo; every push to `main` deploys
   automatically (~15 s). rashadul.me redirects to www.rashadul.me. Pages: `/` and `/thesis/`.

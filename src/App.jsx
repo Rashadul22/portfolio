@@ -3,6 +3,7 @@ import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import { Research, Publications, About, Credentials, Contact, Footer } from './components/Sections.jsx'
 import { usePointerFx, useSmoothScroll } from './components/fx.jsx'
+import Intro from './components/Intro.jsx'
 
 const MorphField = lazy(() => import('./three/MorphField.jsx'))
 
@@ -43,6 +44,7 @@ export default function App() {
   const field = useIdleMount()
   return (
     <>
+      <Intro />
       {field && <Suspense fallback={null}><MorphField /></Suspense>}
       <a className="skip" href="#main">Skip to content</a>
       <Nav />

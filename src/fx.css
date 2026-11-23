@@ -40,6 +40,34 @@ main, .footer { position: relative; z-index: 1; }
   pointer-events: none; z-index: 100; transition: width .25s, height .25s, left .25s, top .25s, background-color .25s, border-color .25s; }
 .cursor.is-link { width: 56px; height: 56px; left: -28px; top: -28px; background: rgba(91,214,238,.10); border-color: rgba(91,214,238,.9); }
 
+/* ---------- 3D hotspots (projected from the scene each frame) ---------- */
+.hotspots { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+.hotspot { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 10px; opacity: 0; pointer-events: auto;
+  text-decoration: none; color: var(--t1); font: 500 12px var(--mono); letter-spacing: .04em; white-space: nowrap; transition: opacity .3s; }
+.hotspot[data-on="0"] { pointer-events: none; }
+.hotspot--flip { flex-direction: row-reverse; translate: -100% 0; }
+.hotspot--flip i { margin-left: 0; margin-right: -6px; }
+.hotspot i { position: relative; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(91,214,238,.18); }
+.hotspot i::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(91,214,238,.6); animation: ping 1.6s ease-out infinite; }
+.hotspot span { padding: 6px 10px; border: 1px solid rgba(91,214,238,.35); border-radius: 999px; background: rgba(10,16,32,.7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color .2s, color .2s; }
+.hotspot:hover span, .hotspot:focus-visible span { background: var(--accent); color: var(--accent-ink); }
+@keyframes ping { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+
+/* ---------- Intro (first visit) ---------- */
+.intro { position: fixed; inset: 0; z-index: 200; display: grid; place-content: center; justify-items: center; gap: 10px; background: var(--ink);
+  pointer-events: none; animation: intro-out .6s cubic-bezier(.7,0,.3,1) 1.55s forwards; }
+.intro__ecg { width: min(520px, 80vw); height: auto; overflow: visible; }
+.intro__ecg path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.1s cubic-bezier(.6,.1,.3,1) .1s forwards; filter: drop-shadow(0 0 6px rgba(91,214,238,.8)); }
+.intro__name { margin: 8px 0 0; font: 400 clamp(22px, 3vw, 30px) var(--serif); color: var(--t1); opacity: 0; animation: fadein .5s ease .7s forwards; }
+.intro__sub { margin: 0; font: 500 11px var(--mono); letter-spacing: .24em; text-transform: uppercase; color: var(--t3); opacity: 0; animation: fadein .5s ease .9s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fadein { to { opacity: 1; } }
+@keyframes intro-out { to { opacity: 0; visibility: hidden; transform: translateY(-2%); } }
+.intro-seen .intro { display: none; }
+.intro-seen [data-rise] { animation-delay: calc(var(--i, 0) * 90ms + 80ms); }
+html:not(.intro-seen) [data-rise] { animation-delay: calc(var(--i, 0) * 90ms + 1500ms); }
+
 /* ---------- Scroll cue ---------- */
 .scrollcue { position: absolute; left: 50%; bottom: 24px; z-index: 1; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px;
   font: 500 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--t3); text-decoration: none; }
@@ -71,6 +99,7 @@ main, .footer { position: relative; z-index: 1; }
   .scrollcue { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
   .split__word { transform: none !important; }
   .scrollcue i::after { display: none; }
 }
