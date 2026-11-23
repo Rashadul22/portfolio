@@ -51,22 +51,30 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
   - Fixes learned: R3F default tone mapping + lights > 1.0 wash out paper colours -> unlit material + `flat`;
     font-swap layout shift fixed with metric-matched fallback @font-face (both pages now CLS 0).
 - Home page: hero stat corrected to "1,191 ECG photos (1,175 patients)".
-- NEXT (after user OK on sample), build in this order: (1) pipeline scroll story "anatomy of a paper ECG"
-  (paper -> photo -> mask -> 448x1024 -> ConvNeXt-Tiny blocks -> 5 outputs); (2) shortcut-test toggle
-  (full / trace erased / trace only: dev CV 0.89 / 0.507 / 0.847); (3) paper-condition robustness slider + 9-bar strip
-  (0.834–0.846); (4) lead explorer hotspots (RBBB V1 +2.12, V2 +0.88; MI/ischaemia V1–V3, aVF, III; rate -> rhythm strip;
-  aVR alignment caveat); (5) paper 2: report typewriter + confidence/refer meter, charts (pre-training bars,
-  direct vs digitise, report systems); (6) what did not work; (7) where this goes; skills; credits;
-  (8) teaser card on home page + update home thesis card to brief numbers.
-- CONFLICT to show user: CV thesis text (ConvNeXt-Small trimodal, val AUC 0.837, "1,191 patients") is out of date vs
-  brief (ConvNeXt-Tiny image model, locked test 0.923, 1,191 photos / 1,175 patients). Home research card still has
-  the CV version until the user confirms. Brief credits: supervisor name to confirm (CV: Dr. Md. Ali Hossain);
-  co-supervisor Dr Mohammad Ali Moni (Charles Sturt University).
+- 2026-11-23 · FULL THESIS PAGE BUILT + verified (user said "build the rest"). Sections: hero 3D, problem, data +
+  audit, pipeline scroll story (CSS 3D exploded stack, 7 steps), results (test AUROC dot chart), checks (shortcut
+  toggle demo + session/phone caveats + robustness demo with 7 simulated paper forms and range bands), what did not
+  work, paper 2 (report typewriter + refer gate, pre-training dot chart, direct-vs-digitise dot chart, report-systems
+  bar chart, facts, lead explorer), next steps, credits + skills. Sticky in-page nav. Home: thesis card now uses brief
+  numbers and links to thesis/; publications "in preparation" rows are working descriptions, not titles.
+- Verified: mobile 375 + desktop 1280 screenshots of each demo; buttons work (shortcut 0.507, uncertain -> refer,
+  MI highlights V1–V3 + aVF/III); no console errors from the current bundles.
+- Lighthouse (prod build): thesis desktop 100/100/100/100, mobile perf 95–96 (TBT 100–160 ms), a11y 100, CLS 0;
+  home desktop 100, mobile 85–95 (noise), CLS 0.
+- Perf lessons: draw canvases only when near the viewport (`whenNear` in ecg.js); start the 3D hero on
+  requestIdleCallback; inactive text uses a 4.5:1 grey, never opacity.
+- Honesty rules applied: per-form robustness scores NOT shown (brief gives only 0.834–0.846); pipeline output values
+  and report confidence labelled "illustrative"; dev-CV vs test numbers labelled everywhere.
+- Commits are on branch `thesis-showcase` (brief: commit per step on a branch, push only after yes). Not pushed.
+- STILL TO CONFIRM with user: supervisor name in credits (used CV: Dr. Md. Ali Hossain); CV itself is out of date vs
+  brief (ConvNeXt-Small trimodal 0.837 vs ConvNeXt-Tiny 0.923); per-form robustness numbers if they want the 9 bars;
+  final paper titles; deploy (merge to main + push + enable Pages) and rashadul.me domain.
 
 ## Where things are
 - Content: `src/content.js` (from CV). Old site text: `notes/content-extracted.txt`.
-- Thesis page: `thesis/index.html`, `src/thesis/` (ThesisApp, PaperScene 3D, ecg.js synthetic ECG + paper drawing,
-  AurocChart, data.js numbers from brief, thesis.css light palette). Build has two inputs (vite.config.js).
+- Thesis page: `thesis/index.html`, `src/thesis/`: ThesisApp (page), PaperScene (3D hero), ecg.js (synthetic ECG,
+  paper drawing, lead boxes, whenNear), Charts.jsx (DotChart, BarChart), Pipeline.jsx, Interactives.jsx (shortcut,
+  robustness, lead explorer), Report.jsx, data.js (all numbers from the brief), thesis.css. Two Vite inputs.
 - Code: `src/App.jsx`, `src/components/Hero.jsx`, `src/components/Sections.jsx`, `src/three/EcgScene.jsx`,
   `src/styles.css` (base + hero), `src/sections.css`, `src/entry-server.jsx` + `scripts/prerender.mjs` (pre-render).
 - Run: `npm run dev` (open http://localhost:5173/portfolio/) · Build: `npm run build` -> `dist/` (pre-rendered).

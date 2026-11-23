@@ -26,6 +26,8 @@
 .chips li { padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); font: 400 12px var(--mono); color: var(--t2); }
 .arrow-link { color: var(--accent); font-weight: 500; text-decoration: none; font-size: 14px; }
 .arrow-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.arrow-link--cta { padding: 9px 16px; border: 1px solid var(--accent); border-radius: 999px; }
+.arrow-link--cta:hover { background: var(--accent); color: var(--accent-ink); text-decoration: none; }
 
 /* Publications */
 .pubgroup { margin-bottom: 40px; }

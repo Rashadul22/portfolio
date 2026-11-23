@@ -37,9 +37,13 @@ export function Research() {
                 {p.tools.map((t) => <li key={t}>{t}</li>)}
               </ul>
               {p.link && (
-                <a className="arrow-link" href={p.link[1]} target="_blank" rel="noopener noreferrer">
-                  {p.link[0]} <span aria-hidden="true">↗</span>
-                </a>
+                p.link[1].startsWith('http') ? (
+                  <a className="arrow-link" href={p.link[1]} target="_blank" rel="noopener noreferrer">
+                    {p.link[0]} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <a className="arrow-link arrow-link--cta" href={p.link[1]}>{p.link[0]} <span aria-hidden="true">→</span></a>
+                )
               )}
             </div>
           </article>

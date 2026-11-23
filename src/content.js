@@ -41,18 +41,19 @@ export const education = [
 
 export const research = [
   {
-    tag: 'Undergraduate thesis · Sep 2025 – Jun 2026',
-    title: 'Multimodal deep learning for multi-label CVD diagnosis from smartphone-captured paper ECGs',
+    // Thesis numbers from notes/thesis-brief.md (supersedes the CV text; manuscript draft)
+    tag: 'B.Sc. thesis · 2025 – 2026 · Interactive page',
+    title: 'Reading paper ECGs from a phone photo',
     summary:
-      'Trimodal late fusion — ConvNeXt-Small on ECG photos, XGBoost on 11 ECG parameters, XGBoost on 26 clinical biomarkers — for five-class multi-label cardiovascular disease diagnosis in low-resource settings. Original dataset of 1,191 patients collected at Enam Medical College and Hospital, Savar (703 complete multimodal, 488 ECG-only), de-identified before modelling.',
-    metrics: [['0.837', 'Val AUC'], ['0.824', 'Test AUC'], ['0.917', 'NHFB AUC'], ['0.809', 'CPEIC AUC']],
+      'A dataset of 1,191 smartphone photographs of paper ECGs from Enam Medical College Hospital (1,175 patients), each labelled from the cardiologist’s own written remark, and a strict evaluation protocol around it. A deliberately plain image model (ConvNeXt-Tiny) reads the photo directly.',
+    metrics: [['0.923', 'Test macro AUROC'], ['1,191', 'ECG photos'], ['0.83–0.89', 'External AUROC'], ['240', 'Locked test records']],
     points: [
-      'External validation without retraining in Pakistan (CPEIC) and Bangladesh (NHFB).',
-      '25 pretrained backbones benchmarked; seven-model ablation; Asymmetric Loss, effective-number weighting, per-class thresholds.',
-      'Grad-CAM and SHAP align with diagnostic criteria (ST regions, QRS morphology, CPK and electrolytes).',
+      'Locked test set opened once; 95% CI 0.895–0.946. Checks show the model reads the waveform, not shortcuts.',
+      'Robust to crumpling, stains and scanning: nine physical forms of the same ECGs score 0.834–0.846.',
+      'Paper 1: manuscript in preparation for IEEE JBHI. Paper 2 (photo to written report): in progress.',
     ],
-    tools: ['PyTorch', 'ConvNeXt', 'XGBoost', 'OpenCV', 'SHAP', 'Grad-CAM'],
-    link: null,
+    tools: ['PyTorch', 'timm', 'ConvNeXt', 'Vision-language models', 'Vertex AI'],
+    link: ['Explore the interactive thesis', 'thesis/'],
   },
   {
     tag: 'Independent research · Oct 2026',
@@ -93,7 +94,8 @@ export const publications = {
     { authors: 'M. R. Islam', title: 'An Explainable Agentic AI Framework for Uncertainty-Aware and Abstention-Enabled Acute Ischemic Stroke Imaging Decisions', venue: 'arXiv:2601.01008 [eess.IV]', year: 'Jan 2026', url: 'https://arxiv.org/abs/2601.01008' },
   ],
   inPreparation: [
-    { title: 'A Multimodal Deep Learning Framework for Multi-label Cardiovascular Disease Diagnosis from Smartphone-Captured Paper ECGs and Clinical Data in Low-Resource Settings', note: 'Being prepared for journal submission' },
+    { title: 'Paper ECG photographs dataset and evaluation protocol (thesis, paper 1)', note: 'Manuscript in preparation for IEEE JBHI · working description, not the final title' },
+    { title: 'From a phone photo of a paper ECG to a written report (thesis, paper 2)', note: 'In progress · working description' },
     { title: 'Bridging the Generalization Gap in Sepsis Mortality Prediction: A Feature-Audited CatBoost Framework with Cross-Database Validation', note: 'Data access approved; external validation on MIMIC-IV and eICU in progress' },
   ],
 }
