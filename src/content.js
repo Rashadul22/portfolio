@@ -49,7 +49,7 @@ export const research = [
     metrics: [['0.923', 'Test macro AUROC'], ['1,191', 'ECG photos'], ['0.83–0.89', 'External AUROC'], ['240', 'Locked test records']],
     points: [
       'Locked test set opened once; 95% CI 0.895–0.946. Checks show the model reads the waveform, not shortcuts.',
-      'Robust to crumpling, stains and scanning: nine physical forms of the same ECGs score 0.834–0.846.',
+      'Robust to crumpling, stains and scanning: nine physical forms of the same ECGs score 0.826–0.844.',
       'Paper 1: manuscript in preparation for IEEE JBHI. Paper 2 (photo to written report): in progress.',
     ],
     tools: ['PyTorch', 'timm', 'ConvNeXt', 'Vision-language models', 'Vertex AI'],

@@ -1,0 +1,21 @@
+/* Stamp: absolute in a corner of a position:relative parent */
+.stp-root { position: absolute; display: block; pointer-events: none; z-index: 2; color: var(--stp-ink);
+  --stp-rot: -6deg; transform: rotate(var(--stp-rot)); transform-origin: 50% 50%; mix-blend-mode: multiply; opacity: .92; }
+.stp-root svg { display: block; height: auto; overflow: visible; }
+.stp-top-right { top: 14px; right: 14px; }
+.stp-top-left { top: 14px; left: 14px; }
+.stp-bottom-right { bottom: 14px; right: 14px; }
+.stp-bottom-left { bottom: 14px; left: 14px; }
+:root[data-theme='dark'] .stp-root { mix-blend-mode: normal; opacity: .9; }
+
+.stp-wait { opacity: 0; transform: rotate(var(--stp-rot)) scale(1.9); }
+.stp-hit { animation: stp-thump 620ms cubic-bezier(.3,.7,.3,1) both; }
+@keyframes stp-thump {
+  0%   { opacity: 0; transform: rotate(calc(var(--stp-rot) - 3deg)) scale(1.9); filter: blur(3px); }
+  45%  { opacity: .95; transform: rotate(var(--stp-rot)) scale(.93); filter: blur(0); }   /* press down, overshoot */
+  62%  { transform: rotate(var(--stp-rot)) scale(1.02); filter: blur(1.2px); }            /* ink spread */
+  100% { opacity: .92; transform: rotate(var(--stp-rot)) scale(1); filter: blur(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stp-wait, .stp-hit { animation: none; opacity: .92; transform: rotate(var(--stp-rot)); filter: none; }
+}

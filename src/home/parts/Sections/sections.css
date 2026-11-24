@@ -1,0 +1,66 @@
+/* Sections: publications, about, credentials, contact, footer. All classes prefixed sx- */
+.sx-sec { padding-top: 48px; padding-bottom: 48px; border-top: 1px solid var(--line); }
+.sx-sec h2 { margin-bottom: 20px; }
+.sx-sub { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 36px 0 6px; }
+.sx-sub:first-of-type { margin-top: 0; }
+.sx-list { list-style: none; margin: 0; padding: 0; }
+.sx-row { position: relative; display: grid; grid-template-columns: 84px 1fr 22px; gap: 4px 20px; padding: 16px 0 16px 16px;
+  border-bottom: 1px solid var(--line); }
+.sx-row::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 2px; background: var(--line); transition: background .2s; }
+.sx-year { font: 500 14px var(--mono); color: var(--muted); padding-top: 3px; }
+.sx-body { font-size: 16.5px; line-height: 1.55; min-width: 0; }
+.sx-body b { font-weight: 600; }
+.sx-title { font-family: var(--serif); font-size: 18px; color: var(--text); }
+.sx-venue { color: var(--muted); font-size: 15px; display: block; margin-top: 2px; }
+.sx-role { display: block; margin-top: 8px; font-size: 15px; color: var(--muted); }
+.sx-arrow { color: var(--accent); font-size: 18px; align-self: start; padding-top: 2px; transition: transform .2s; }
+.sx-row a.sx-link { color: inherit; text-decoration: none; }
+.sx-row a.sx-link::after { content: ""; position: absolute; inset: 0; }
+.sx-row.sx-hasurl:hover::before, .sx-row.sx-hasurl:focus-within::before { background: var(--accent); }
+.sx-row.sx-hasurl:hover .sx-arrow, .sx-row.sx-hasurl:focus-within .sx-arrow { transform: translateX(3px); }
+.sx-row.sx-hasurl:hover .sx-title { color: var(--accent); }
+.sx-row a.sx-link:focus-visible { outline: none; }
+.sx-row:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.sx-two { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; }
+.sx-two p { margin: 0 0 16px; line-height: 1.65; font-size: 17px; max-width: 62ch; }
+.sx-edu { list-style: none; margin: 0; padding: 0; }
+.sx-edu > li { padding: 0 0 18px; }
+.sx-edu strong { font-weight: 600; display: block; }
+.sx-edu .sx-meta { color: var(--muted); font-size: 15px; }
+.sx-edu ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.sx-h3 { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+.sx-two p.sx-lang { margin-top: 8px; font-size: 15px; color: var(--muted); }
+
+.sx-cred { list-style: none; margin: 0; padding: 0; }
+.sx-cred li { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 4px 28px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.sx-cred strong { font-weight: 600; }
+.sx-cred span { color: var(--muted); line-height: 1.5; }
+
+.sx-contact p { margin: 0 0 16px; font-size: 17px; }
+.sx-mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 18px; }
+.sx-mail input { font: 500 15px var(--mono); color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 9px 12px; width: 21em; max-width: 100%; }
+.sx-btn { font: 500 14.5px var(--sans); padding: 9px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+  color: var(--text); cursor: pointer; min-width: 7.5em; }
+.sx-btn:hover { border-color: var(--accent); }
+.sx-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 16px; padding: 0; list-style: none; }
+.sx-contact p.sx-loc { color: var(--muted); font-size: 15px; margin: 0; }
+.sx-sr { position: absolute; left: -9999px; }
+
+.sx-foot { border-top: 1px solid var(--line); padding-top: 24px; padding-bottom: 40px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+.sx-foot p { margin: 0 0 6px; }
+.sx-foot small { font-size: 14px; }
+
+@media (max-width: 720px) {
+  .sx-row { grid-template-columns: 1fr 22px; padding-left: 14px; }
+  .sx-year { grid-column: 1 / -1; padding: 0; }
+  .sx-body { grid-column: 1; }
+  .sx-arrow { grid-column: 2; grid-row: 2; }
+  .sx-two { grid-template-columns: 1fr; gap: 28px; }
+  .sx-cred li { grid-template-columns: 1fr; }
+  .sx-mail input { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sx-row::before, .sx-arrow { transition: none; }
+}

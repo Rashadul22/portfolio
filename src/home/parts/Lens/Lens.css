@@ -1,0 +1,12 @@
+.lns-wrap { position: relative; display: block; touch-action: pan-y; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.lns-on { cursor: crosshair; }
+.lns-lens { position: absolute; left: 0; top: 0; z-index: 5; border-radius: 50%; overflow: hidden; pointer-events: none;
+  background: var(--surface); border: 1.5px solid var(--text);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface) 70%, transparent), 0 6px 18px rgba(0,0,0,.22); will-change: transform; }
+.lns-clone { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.lns-cross { position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; pointer-events: none;
+  background: linear-gradient(var(--accent), var(--accent)) center / 1px 100% no-repeat,
+              linear-gradient(var(--accent), var(--accent)) center / 100% 1px no-repeat; opacity: .8; }
+.lns-label { position: absolute; left: 50%; bottom: 9%; transform: translateX(-50%); font: 500 11px/1 var(--mono); color: var(--text);
+  background: color-mix(in srgb, var(--surface) 88%, transparent); padding: 2px 5px; border-radius: 3px;
+  border: 1px solid var(--line); pointer-events: none; }

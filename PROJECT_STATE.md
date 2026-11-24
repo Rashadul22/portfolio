@@ -1,5 +1,77 @@
 # PROJECT_STATE — Research portfolio (Md Rashadul Islam)
 
+## CURRENT: ACADEMIC REDESIGN (24 Nov 2026) — branch `academic`, NOT pushed, NOT live
+- Why: user found the 3D/particle/chapter site bad (empty first screen, slow, counters show 0, weak credibility).
+  Audit + brief from the ECG-project session; everything below this section describes the OLD site (still live on main).
+- Goal: clean, fast, credible academic portfolio. Done means: hero (name, role, buttons) visible on first screen at 1440
+  and 375; sections Research (2-3 cards, one real figure each), Publications (peer-reviewed / preprints / in
+  preparation), About+Education, Credentials, Contact; light default + dark toggle; body 17px; no counters, no 3D on
+  home, no "first" claims; Lighthouse perf + a11y >= 90 mobile and desktop; no console errors; no horizontal scroll.
+- Decisions: lead with the ECG thesis (1,191 photos, 1,175 patients, test AUROC 0.923, 95% CI 0.895-0.946);
+  NASA card stays but not in hero and without "first"; sepsis = neutral working description; VLM card: model answered
+  "regular" 80/80 (rhythm accuracy 50% = chance), from the public HF dataset card.
+- Code: `src/home/Home.jsx`, `src/home/data.js` (all text), `src/home/home.css`. App.jsx/main.jsx/index.html now use
+  only these (old components still in src/components, src/three: delete in the full build). Thesis page untouched.
+- SAMPLE DONE (hero + ECG card with HTML dot/CI chart of real test AUROCs): screenshots `notes/sample/`
+  (desktop 1440, phone 375 via iframe frame `phone_frame.html`; headless Chrome cannot go below ~500 px window).
+  `npm run build` clean. WAITING for the user's OK on the look.
+- Pending from user: CV PDF (button hidden until `person.cv` set), Google Scholar URL.
+- 24 Nov (later): user changed direction: wants a UNIQUE, top-0.5% portfolio, using ideas from feralui.dev,
+  lightswind.com, threeui.com, 21st.dev, motionsite.ai plus own research, and ChatGPT as outside reviewer.
+  Research: `notes/research-2026-11-24.md` (verdict: libraries = finishing touches only; candidate concept "The
+  printout": site as a paper ECG record that visitors can crumple/stain while a readout keeps reading it).
+  Prompts for ChatGPT: `notes/chatgpt_prompts.md` (1 concept red-team, 2 craft + paper physics, 3 professor view).
+  WAITING for the user's pasted ChatGPT answers; then pick the concept, rebuild the sample, show it.
+  The plain academic sample stays as the content base (text, chart, structure are reused).
+- 24 Nov (ChatGPT answers received, all 3; digest notes/chatgpt_answers_digest.md): both ChatGPT runs reject the
+  whole-site "printout" (gimmick, slow, fake-live-model risk). DECISION: identity "The Same Signal" on an evidence-
+  dossier base (Jon Barron-style academic structure + Distill-style figures). One exhibit only: physical-form
+  selector (9 real forms, measured numbers, no live model, synthetic SVG sheet + CSS/SVG-filter effects, no WebGL).
+  Built: `src/home/SameSignal.jsx` (below hero), data `forms` in data.js. Test hook `?form=<id>`.
+- NUMBER FIX: 0.834-0.846 was the DRAFT-label model. Final (paper 1 results.tex, eidb v1 csv): 0.826-0.844, change vs
+  render -0.007 to +0.011. Home fixed. The /thesis page (src/thesis/data.js, notes/thesis-brief.md) still has the old
+  range: fix in the full build.
+- Next after the user's OK: Research cards (ECG, report generation, VLM blind spot, NASA re-analysis as
+  "independent secondary analysis"), Outputs (peer-reviewed / preprints "not peer reviewed" / in preparation /
+  thesis, each with "My role"), About+Education, Credentials, Contact; remove old 3D code; Lighthouse; deploy on yes.
+- 25 Nov: MOTION LAYER (user: uniqueness from existing libraries, not hand-built). Sources checked: feralui,
+  lightswind, threeui, 21st.dev, motionsite, originkit (decorative shaders, login for code), user's spreadsheet
+  (Downloads/final Ultimate_Frontend_Resource_Library_Complete.xlsx: 242 generic entries; React Bits = MIT+Commons
+  Clause). Best find: **paperlab** (Codrops 18 Oct 2026, Apache-2.0, github.com/NourMtir0722/Paperlab): real 3D
+  paper (crumple, unroll from a roll, peel, fold), reduced-motion + DOM fallback built in.
+  Built: (1) hero ECG calipers (`src/home/HeroTrace.jsx`: pointer -> RR ms and /min of a synthetic strip with real
+  beat-to-beat variation); (2) exhibit: animated SVG crumple (crush then relax, flatten back) + pointer tilt + glare;
+  (3) "Crumpled" form on desktop/WebGL2 = paperlab 3D sheet with the synthetic ECG as texture (`Paper3D.jsx`, lazy).
+  Upgraded React 18.3 -> 19.2.9, R3F 8 -> 9.8.2 (--legacy-peer-deps), + gsap 3.13.0, paperlab 0.9.1; lenis removed.
+  Thesis page still renders (5 canvases, no new errors). Build: main 15 kB + shared 194 kB (60 kB gzip); Paper3D
+  156 kB gzip + R3F 234 kB gzip load only when "Crumpled" is chosen on desktop.
+  Pane console shows one "status 999" resource error on every page (also before paperlab): not investigated.
+- From the user's files: Scholar URL (added), real manuscript titles (data.js `manuscripts`). CV PDF has the phone
+  number and the OLD thesis description (trimodal fusion) -> do not publish as is; ask the user.
+- 25 Nov: 3 sub-agents scanned the Excel + galleries; reports in the shared notes folder
+  (C:\Users\User\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\side-session-notes\local_98259fe1-c7ac-4fbc-9c34-e72f1666cb07\
+  components_react_libs.md, components_creative.md, resources_other_categories.md).
+  ADOPTED: FeralUI **pullcord** (npm pullcord 0.1.0, MIT, real rope sim) as the theme switch (`PullCord.jsx`, lazy,
+  client-only) + circular theme reveal from the knob via the View Transitions API (no library). Own hand-built cord
+  replaced. Tested: pull -> dark, pull -> light, localStorage saved.
+  SHORTLIST (not built): React Bits Dot Grid -> cursor-springy ECG grid behind the hero; fffuel paper grain;
+  CSS scroll-driven reveals; JSON-LD Person schema. REJECTED: React Bits Paper Crumple (paperlab already does it),
+  Lanyard (three.js for a badge), GSAP SplitText (needs gsap in the main bundle), Rive/Lottie (no pull-cord file,
+  WASM runtime), generic glow/glass components.
+- 25 Nov night (user asleep, said: decide yourself, build it with many sub-agents, take needed permissions).
+  Research agents (8 reports, notes folder above: gems_*.md). FINAL PICKS being built by 6 agents into
+  `src/home/parts/<Name>/` with previews in `preview/*.html` (brief: notes/agent_brief.md):
+  RocExplorer (draggable threshold on locked-test ROC; data src/home/roc_test.json exported by
+  H:\ecg-project\scripts\portfolio_roc_export.py from SAVED test predictions, aggregate only, AUCs match reported),
+  ReportCard (paper 2, typewriter report slip + gate + test endpoints), Stamp + Lens (magnifier on the ECG sheet),
+  MoreResearch (external tests strip, VLM dumbbell, NASA card), Sections (outputs/about/credentials/contact/footer),
+  PaperGrid (cursor-bending ECG grid behind hero).
+  Done by me: old home code removed (src/components, src/three, old css; in git history), robustness range fixed to
+  0.826-0.844 in thesis page + content.js + thesis-brief, JSON-LD Person, CSS scroll "focus-in" on h2.
+  Not picked: target cursor, splash ink, 3D phone capture scene, LUT grading, DeskFolio (5 MB Freepik stickers).
+- NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
+- Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
+
 ## Goal
 Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero, mobile-first, fast; existing content kept.
 **Done means:** live on GitHub Pages (https://rashadul22.github.io/portfolio/) and all checks below pass.

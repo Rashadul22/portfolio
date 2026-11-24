@@ -137,10 +137,10 @@ export function Robustness() {
           </div>
           <div className="range__track">
             <i className="range__band range__band--ext" style={{ left: `${x(0.83)}%`, width: `${x(0.89) - x(0.83)}%` }} />
-            <i className="range__band" style={{ left: `${x(0.834)}%`, width: `${x(0.846) - x(0.834)}%` }} />
+            <i className="range__band" style={{ left: `${x(0.826)}%`, width: `${x(0.844) - x(0.826)}%` }} />
           </div>
           <ul className="range__key">
-            <li><i className="key key--forms" /> Same 977 ECGs in nine physical forms: <strong>0.834–0.846</strong></li>
+            <li><i className="key key--forms" /> Same 977 ECGs in nine physical forms: <strong>0.826–0.844</strong></li>
             <li><i className="key key--ext" /> Three external image sets (Germany, China, USA): 0.83–0.89</li>
           </ul>
         </div>

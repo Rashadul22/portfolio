@@ -102,7 +102,7 @@ sensitivity 0.42; "Other" is hard.
 ### 5c. Robustness on outside images (model never retrained)
 External sets from Germany, China and the USA: macro AUROC 0.83-0.89. On one set the same 977 ECGs appear in nine
 physical forms (digital render, colour/B&W scans, phone photos of clean, crumpled and stained paper, photo of a
-monitor): **0.834-0.846, every change within +-0.021** -> crumpling, stains and scanning barely matter.
+monitor): **0.826-0.844 (final labels; the earlier 0.834-0.846 was the draft-label model), every change vs render within -0.007 to +0.011** -> crumpling, stains and scanning barely matter.
 Chart idea: nine bars nearly level, with paper-condition icons.
 
 ### 5d. What did NOT work (show these proudly; they are pre-registered negative results)
@@ -177,7 +177,7 @@ Never trace a real patient ECG.
 - "Pre-training" bars: ImageNet 0.892, generic renders 0.919, shuffled-lead 0.917, measured renders 0.916.
 - "Read directly vs digitise" paired bars per class.
 - Report systems: template 0.734, R3 0.717, PULSE-7B 0.458, Qwen2-VL 0.309 (impression macro-F1).
-- Robustness strip: nine physical forms, 0.834-0.846.
+- Robustness strip: nine physical forms, 0.826-0.844.
 
 ## 9. What is next / possibilities (section "Where this goes")
 - Blinded reader study: two cardiologists rate reports from four systems (protocol drafted).

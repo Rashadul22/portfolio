@@ -1,0 +1,40 @@
+.roc-wrap { position: relative; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.roc-title { font: 400 22px/1.3 var(--serif); margin: 0 0 14px; }
+.roc-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.roc-tab { font: 500 14px var(--sans); color: var(--text); background: transparent; border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px; min-height: 40px; cursor: pointer; }
+.roc-tab[aria-selected='true'] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.roc-body { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.roc-plot svg { width: 100%; height: auto; display: block; touch-action: none; cursor: crosshair; user-select: none; }
+.roc-frame { fill: var(--bg); stroke: var(--text); stroke-width: 1.2; }
+.roc-grid { stroke: var(--grid); stroke-width: 1; }
+.roc-diag { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.roc-curve { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linejoin: round; }
+.roc-guide { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 3; }
+.roc-dot { fill: var(--trace); stroke: var(--surface); stroke-width: 2; }
+.roc-hit { fill: transparent; cursor: grab; }
+.roc-tick { font: 14px var(--mono); fill: var(--muted); }
+.roc-axis { font: 500 16px var(--sans); fill: var(--text); }
+.roc-auc { font: 500 16px var(--mono); fill: var(--accent); }
+.roc-slider { display: block; font-size: 15px; }
+.roc-slider input { width: 100%; margin: 10px 0 2px; accent-color: var(--accent); height: 28px; cursor: pointer; }
+.roc-ends { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); }
+.roc-num { font-family: var(--mono); font-weight: 500; }
+.roc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+.roc-stats div { border-top: 1px solid var(--line); padding-top: 8px; }
+.roc-stats dt { font-size: 14px; color: var(--muted); }
+.roc-stats dd { margin: 0; font-size: 26px; line-height: 1.2; }
+.roc-stats small { font: 14px var(--mono); color: var(--muted); }
+.roc-cm { width: 100%; border-collapse: collapse; font-size: 14px; }
+.roc-cm th, .roc-cm td { border: 1px solid var(--line); padding: 8px; text-align: center; }
+.roc-cm th[scope='row'] { text-align: left; font-weight: 500; color: var(--muted); }
+.roc-cm td { font: 500 22px var(--mono); }
+.roc-cm td small { display: block; font: 400 14px var(--sans); color: var(--muted); }
+.roc-ok { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.roc-bad { background: color-mix(in srgb, var(--trace) 10%, transparent); }
+.roc-live { font-size: 15px; margin: 16px 0 6px; min-height: 3em; }
+.roc-cap { font-size: 15px; margin: 0 0 4px; }
+.roc-note { font-size: 14px; color: var(--muted); margin: 0; }
+.roc-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 720px) { .roc-body { grid-template-columns: 1fr; } .roc-wrap { padding: 14px; } }
+.roc-stats dd { margin: 0; }
