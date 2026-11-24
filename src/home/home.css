@@ -211,3 +211,5 @@ body { transition: background-color 300ms ease, color 300ms ease; }
 .sx-foot { margin-top: 48px; padding-bottom: 40px; }
 html, body { overflow-x: clip; }
 @media (max-width: 820px) { #ecg .stp-root { transform-origin: bottom right; scale: .72; } }
+/* On narrower screens the rope is raised so the knob hangs inside the header, clear of the hero text. */
+@media (max-width: 1100px) { :root { --pullcord-top: -122px; } }

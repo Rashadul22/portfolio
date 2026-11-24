@@ -69,6 +69,17 @@
   Done by me: old home code removed (src/components, src/three, old css; in git history), robustness range fixed to
   0.826-0.844 in thesis page + content.js + thesis-brief, JSON-LD Person, CSS scroll "focus-in" on h2.
   Not picked: target cursor, splash ink, 3D phone capture scene, LUT grading, DeskFolio (5 MB Freepik stickers).
+- 25 Nov ~02:30: ALL PARTS INTEGRATED in src/home/Home.jsx (order: hero+PaperGrid, SameSignal (+Lens, 3D crumple),
+  Research: ECG card (+Stamp) -> RocExplorer -> ReportCard -> ExternalTests -> VlmCard -> NasaCard, Outputs, About,
+  Credentials, Contact, Footer). Thesis title in Outputs = official CV title. Fixed: hidden-table overflow (.mr-sr),
+  heading focus-in no longer lowers contrast, ROC <dl> structure, stamp moved bottom-right (scaled on phones).
+  Verified: ROC slider by keyboard (status text updates), pull cord both ways, no console errors, no horizontal
+  scroll at 566 px. Lighthouse (prod build, local): mobile 96/100/100/100 (LCP 2.3 s, CLS 0.045), desktop
+  100/100/100/100. Committed on branch `academic` (46ab6a1). `git push` was BLOCKED by the auto-mode safety
+  classifier -> not pushed; the live site is unchanged. To publish: push `academic`, check the Vercel preview, then
+  merge into main (= live) only with the user's yes.
+  Known gaps: pull-cord knob overlaps hero text on narrow phones; lens touch press-and-hold untested; PaperGrid bend
+  only seen by code, not by a real pointer; CV still not on the site (phone number + old thesis text).
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 
