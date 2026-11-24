@@ -80,6 +80,16 @@
   merge into main (= live) only with the user's yes.
   Known gaps: pull-cord knob overlaps hero text on narrow phones; lens touch press-and-hold untested; PaperGrid bend
   only seen by code, not by a real pointer; CV still not on the site (phone number + old thesis text).
+- 25 Nov ~02:00 local (19:56 UTC 24 Nov): user (going to sleep) gave permission; branch `academic` PUSHED to GitHub
+  (commits 46ab6a1, 05094a7). Pull cord raised on screens <= 1100 px (--pullcord-top -122px) so the knob hangs in
+  the header; tested: mouse drag toggles, keyboard Enter toggles; touch drag in the pane's phone emulation did not
+  toggle (emulation artefact? untested on a real phone). Grid bend verified (canvas redraws on pointer), lens shows.
+  Lesson: commit with the repo's own git identity (rashadulislamfahad225@...), not -c overrides.
+- !!! LIVE SITE DOWN, NOT CAUSED BY THIS WORK: https://www.rashadul.me returns HTTP 402 "Payment required /
+  DEPLOYMENT_DISABLED"; Vercel commit status for the branch says "Account is blocked." The Vercel account itself is
+  blocked (billing / fair-use); main was deployed fine on 23 Nov. Only the user can resolve it (Vercel dashboard /
+  email). Alternatives need the user: unblock Vercel, or move hosting (GitHub Pages / Netlify / Cloudflare Pages) and
+  change the domain's DNS at the registrar.
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 
