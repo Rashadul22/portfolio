@@ -90,6 +90,13 @@
   blocked (billing / fair-use); main was deployed fine on 23 Nov. Only the user can resolve it (Vercel dashboard /
   email). Alternatives need the user: unblock Vercel, or move hosting (GitHub Pages / Netlify / Cloudflare Pages) and
   change the domain's DNS at the registrar.
+- 25 Nov ~03:10: user said go live + use free hosting. main fast-forwarded to the redesign (ac6f5a5, pushed; Vercel
+  refuses: account blocked). HOSTING MOVED TO GITHUB PAGES: built with `VERCEL=1 npm run build` (base '/'), dist
+  copied into repo Rashadul22/rashadul22.github.io (has CNAME rashadul.me; + .nojekyll, 404.html), commit 62d9c34.
+  Verified via `curl --resolve rashadul.me:80:185.199.108.153`: home title, /thesis/ 200, assets 200, www -> apex.
+  WAITING ON USER: Namecheap DNS change (notes/DNS_STEPS_namecheap.md); DNS still points to Vercel 76.76.21.21.
+  HOW TO DEPLOY NOW: build with VERCEL=1, copy dist/. into a clone of rashadul22.github.io, commit with the repo
+  identity, push (TODO: GitHub Action to automate).
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 

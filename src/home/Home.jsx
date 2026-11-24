@@ -3,6 +3,8 @@ import { person, facts, research, testAuroc } from './data.js'
 import SameSignal from './SameSignal.jsx'
 import HeroTrace from './HeroTrace.jsx'
 import PullCord from './PullCord.jsx'
+import HeroStage from './HeroStage.jsx'
+import InteractLayer from './parts/Interact/InteractLayer.jsx'
 import PaperGrid from './parts/PaperGrid/PaperGrid.jsx'
 import RocExplorer from './parts/RocExplorer/RocExplorer.jsx'
 import ReportCard from './parts/ReportCard/ReportCard.jsx'
@@ -67,6 +69,7 @@ function Hero() {
   return (
     <div className="hero-bg"><PaperGrid />
     <section className="hero wrap" aria-labelledby="name">
+      <div className="hero-grid"><div className="hero-text">
       <p className="eyebrow">{person.role}</p>
       <h1 id="name">{person.name}</h1>
       <p className="aff">{person.affiliation}</p>
@@ -76,14 +79,15 @@ function Hero() {
       <div className="actions">
         {person.cv && <a className="btn primary" href={person.cv}>CV (PDF)</a>}
         {person.links.map(([label, href], i) => (
-          <a key={label} className={`btn${!person.cv && i === 0 ? ' primary' : ''}`} href={href}
+          <a key={label} data-magnetic className={`btn${!person.cv && i === 0 ? ' primary' : ''}`} href={href}
             {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{label}</a>
         ))}
       </div>
+      </div><HeroStage /></div>
       <HeroTrace />
       <dl className="facts">
         {facts.map(([n, t]) => (
-          <div key={n}><dt>{n}</dt><dd>{t}</dd></div>
+          <div key={n}><dt data-scramble>{n}</dt><dd>{t}</dd></div>
         ))}
       </dl>
     </section></div>
@@ -97,7 +101,7 @@ function AurocChart() {
   const pct = (v) => `${(((v - lo) / (hi - lo)) * 100).toFixed(2)}%`
   const ticks = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
   return (
-    <figure className="fig">
+    <figure className="fig" data-caliper="fig · test AUROC">
       <div className="chart" role="table" aria-label="Test AUROC per label with 95% confidence intervals">
         {testAuroc.map(([label, v, a, b]) => (
           <div className="row" role="row" key={label}>
@@ -123,7 +127,7 @@ function AurocChart() {
 
 function ResearchCard({ item, figure }) {
   return (
-    <article className="card" id={item.id}>
+    <article className="card" id={item.id} data-tilt>
       {item.id === 'ecg' && <Stamp lines={['LOCKED TEST', 'OPENED ONCE']} date="21 NOV 2026" corner="bottom-right" />}
       <div className="card-text">
         <p className="tag">{item.tag}</p>
@@ -143,6 +147,7 @@ function ResearchCard({ item, figure }) {
 export default function Home() {
   return (
     <>
+      <InteractLayer />
       <a className="skip" href="#main">Skip to content</a>
       <Header />
       <main id="main">
@@ -151,11 +156,11 @@ export default function Home() {
         <section id="research" className="wrap section" aria-labelledby="research-h">
           <h2 id="research-h">Research</h2>
           <ResearchCard item={research[0]} figure={<AurocChart />} />
-          <div className="roc-block"><RocExplorer /></div>
-          <div className="more-block"><ReportCard /></div>
-          <div className="more-block"><ExternalTests /></div>
-          <div className="more-block"><VlmCard /></div>
-          <div className="more-block"><NasaCard /></div>
+          <div className="roc-block" data-caliper="fig · ROC, locked test"><RocExplorer /></div>
+          <div className="more-block" data-tilt><ReportCard /></div>
+          <div className="more-block" data-caliper="fig · external tests"><ExternalTests /></div>
+          <div className="more-block" data-caliper="fig · VLM blind spots"><VlmCard /></div>
+          <div className="more-block" data-caliper="fig · Ucp1"><NasaCard /></div>
         </section>
         <Outputs />
         <About />

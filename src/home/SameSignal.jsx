@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import Lens from './parts/Lens/Lens.jsx'
+import { Reveal } from './parts/Interact/InteractLayer.jsx'
 const Paper3D = lazy(() => import('./Paper3D.jsx'))
 import { forms } from './data.js'
 
@@ -126,15 +127,17 @@ export default function SameSignal() {
       <h2 id="signal-h">One ECG, nine physical forms</h2>
       <p className="sub">
         The model was trained only on phone photographs from one hospital in Dhaka. It was then scored, without
-        retraining, on 977 public ECGs (PTB-XL, Germany) that exist as a clean render, as scans, as phone photographs
-        of clean, crumpled and stained paper, and as a photograph of a monitor.
+        retraining, on 977 public ECGs (PTB-XL, Germany) that exist as a clean render,
+        as <Reveal form="scanned">scans</Reveal>, as <Reveal form="photo">phone photographs</Reveal> of clean,{' '}
+        <Reveal form="crumpled">crumpled</Reveal> and <Reveal form="stained">stained</Reveal> paper, and as a
+        photograph of a <Reveal form="monitor">monitor</Reveal>.
       </p>
       <div className="signal-grid">
         <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
           <filter id="crumple"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="3" result="n" />
             <feDisplacementMap ref={disp} in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" /></filter>
         </svg>
-        <figure className={`stage form-${sel}`} ref={stage} onPointerMove={tilt} onPointerLeave={untilt}>
+        <figure className={`stage form-${sel}`} data-caliper="fig · nine forms" ref={stage} onPointerMove={tilt} onPointerLeave={untilt}>
           <div className="tilt">
             <div className="sheet-wrap">
               <div className="warp" style={{ filter: warp ? 'url(#crumple)' : undefined }}><Lens zoom={2.5} size={150}><Sheet /></Lens></div>
@@ -156,7 +159,7 @@ export default function SameSignal() {
           <div className="readout" role="status" aria-live="polite">
             <p className="ro-form">{f.label}</p>
             <p className="ro-note">{f.note}</p>
-            <p className="ro-num"><span>{f.macro.toFixed(3)}</span> macro AUROC</p>
+            <p className="ro-num"><span data-scramble key={sel}>{f.macro.toFixed(3)}</span> macro AUROC</p>
             <p className="ro-diff">{f.diff === null ? 'Reference form' : `${fmt(f.diff)} vs the clean render, same 977 ECGs`}</p>
           </div>
           <ol className="strip" aria-label="Macro AUROC for all nine forms">
