@@ -5,9 +5,17 @@ export default function About() {
   return (
     <section className="wrap sx-sec" id="about" aria-labelledby="sx-about-h">
       <p className="eyebrow">About</p>
-      <h2 id="sx-about-h">Research interests and education</h2>
+      <h2 id="sx-about-h">Position, interests and education</h2>
       <div className="sx-two">
         <div>
+          <h3 className="sx-h3">Current position</h3>
+          <ul className="sx-edu">
+            <li>
+              <strong>Research Assistant</strong>
+              <span className="sx-meta">NanoBio Technology Center, Daffodil International University, Dhaka</span>
+              <ul><li>Machine learning for medical data, with Dr. Md. Ali Hossain (Director)</li></ul>
+            </li>
+          </ul>
           <h3 className="sx-h3">Interests</h3>
           <p>{profile.interests}</p>
           <p className="sx-lang"><b>Languages.</b> {languages}</p>

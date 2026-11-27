@@ -272,3 +272,4 @@ html, body { overflow-x: clip; }
 /* hero strip fray (mouse) */
 .fray-canvas { position: absolute; left: 0; top: 0; width: 100%; height: 60px; pointer-events: none; }
 .hero-trace.fray .trace { -webkit-mask-image: radial-gradient(circle 58px at var(--mx) var(--my), transparent 70%, #000 100%); mask-image: radial-gradient(circle 58px at var(--mx) var(--my), transparent 70%, #000 100%); }
+.aff-pos { color: var(--text); font-weight: 500; }
