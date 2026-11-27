@@ -73,7 +73,7 @@ function Hero() {
       <div className="hero-grid"><div className="hero-text">
       <p className="eyebrow">{person.role}</p>
       <h1 id="name">{person.name}</h1>
-      <p className="aff"><span className="aff-pos">{person.position}</span><br />{person.affiliation}</p>
+      <p className="aff">{person.affiliation}</p>
       <p className="tagline">{person.tagline}</p>
       <p className="lead">{person.intro}</p>
       <p className="seeking">{person.seeking}</p>

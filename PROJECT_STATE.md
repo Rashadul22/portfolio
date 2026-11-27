@@ -126,7 +126,7 @@
 - 27 Nov (user): CGPA removed from the site (HSC/SSC GPA and final-project A+ kept); contact email = university
   islam15-6062@s.diu.edu.bd (switch back to the personal Gmail when the university address expires; it is in
   src/content.js profile.email and src/home/data.js). Added current position "Research Assistant, NanoBio
-  Technology Center, Daffodil International University" (hero, About, JSON-LD); no start date given by the user.
+  Technology Center, Daffodil International University" (hero, About, JSON-LD); start May 2026 (user, 27 Nov).
   Live (pages 702f716).
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.

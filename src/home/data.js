@@ -6,7 +6,7 @@ export const person = {
   name: 'Md Rashadul Islam',
   role: 'Research portfolio · Medical AI',
   tagline: 'Medical AI beyond clean digital data.',
-  seeking: 'Seeking research assistant, MSc and PhD positions in medical AI and trustworthy machine learning.',
+  seeking: 'Open to MSc and PhD positions, and to research collaborations on medical data.',
   position: 'Research Assistant, NanoBio Technology Center, Daffodil International University (since May 2026)',
   affiliation: 'B.Sc. Computer Science and Engineering, Daffodil International University, Dhaka (2026)',
   intro:
