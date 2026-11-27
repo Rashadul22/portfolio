@@ -74,7 +74,7 @@ function Hero() {
       <p className="eyebrow">{person.role}</p>
       <h1 id="name">{person.name}</h1>
       <p className="aff">{person.affiliation}</p>
-      <p className="tagline">{person.tagline}</p>
+      <p className="tagline">{person.tagline.split('clean').flatMap((x, i) => i ? [<em key={i}>clean</em>, x] : [x])}</p>
       <p className="lead">{person.intro}</p>
       <p className="seeking">{person.seeking}</p>
       <div className="actions">
@@ -88,7 +88,7 @@ function Hero() {
       <HeroTrace />
       <dl className="facts">
         {facts.map(([n, t]) => (
-          <div key={n}><dt data-scramble>{n}</dt><dd>{t}</dd></div>
+          <div key={n} data-tilt><dt data-scramble>{n}</dt><dd>{t}</dd></div>
         ))}
       </dl>
     </section></div>

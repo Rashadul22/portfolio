@@ -135,6 +135,12 @@
   Experience RA May 2026-present (share skipped, notify off), website https://rashadul.me. Not done: name change
   (verified badge risk), custom URL (breaks links), Featured, Publications, Organizations. Adding a position makes
   LinkedIn overwrite the headline: re-check after any new position.
+- 27 Nov (later): LinkedIn Featured += "Research portfolio" link to rashadul.me; Publications now exactly 5 (3 arXiv
+  marked "arXiv preprint (not peer reviewed)", Taylor & Francis chapter, ICCCNT 2025); my accidental duplicates
+  deleted (the user's original entries kept). Site: og:image/og:url added (public/og-cover.png = LinkedIn cover);
+  wording "dataset not yet public, to be released with the paper" (USER: thesis dataset is NOT published; never
+  link or upload it). Research IDs to set up later (user's choice): ORCID first (JBHI asks for it), Google Scholar
+  tidy-up + verified university email, Semantic Scholar claim; ResearchGate optional.
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 
@@ -279,3 +285,14 @@ Professional upgrade of the research portfolio: Vite + React + Three.js 3D hero,
 ## Rules
 - Ask before deploy/push/publish/delete/upload. No private data in the repo (student email is already public on the old site).
 - User writes Bengali; reply short in Bengali; files in English.
+
+## 27 Nov 2026: art direction v2 (user: site looked plain / AI-made; research colour first)
+- Palette (contrast checked by script): warm paper #f6f4ef, ink #1b1f2a, muted #555d6b, indigo #33408f (primary, ECG trace),
+  amber highlighter #c58a1c (text #85590a, tint #f3e4c4), sage #4f8a73 (tags use #3b6a58, 6.1:1). Dark: #0f1220 bg,
+  periwinkle #a9b6ff, amber #f0b44c, sage #8cc5ae, lamp-glow radial background.
+- Fonts: Newsreader (display, italic emphasis), IBM Plex Sans (body), Caveat (hand notes), JetBrains Mono only for numbers.
+  Eyebrows = italic serif with amber rule (no more mono uppercase). Two fonts preloaded by scripts/prerender.mjs.
+- Motion: pill buttons with amber offset shadow, nav underline sweep, amber border light following the pointer on every
+  [data-tilt] card (research card, facts, test chart, report card); hero grid faded; hero poster straight.
+- Lighthouse mobile (local, compressed server): 89/100/100/100 (live site on GitHub CDN was 98 before; expect similar).
+- Screenshots review_2026-11-27/. NOT published yet: waiting for the user's yes.

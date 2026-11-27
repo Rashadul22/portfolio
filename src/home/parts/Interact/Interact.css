@@ -31,12 +31,14 @@
 /* tilt + glare */
 .ix-fx [data-tilt] { transform: perspective(900px) rotateX(var(--ix-rx, 0deg)) rotateY(var(--ix-ry, 0deg)); transform-style: preserve-3d; }
 :where(.ix-fx [data-tilt]) { position: relative; }
-.ix-fx [data-tilt]::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: radial-gradient(circle at var(--ix-gx, 50%) var(--ix-gy, 50%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 60%);
+.ix-fx [data-tilt]::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; padding: 1.5px; z-index: 3;
+  background: radial-gradient(260px circle at var(--ix-gx, 50%) var(--ix-gy, 50%), var(--amber), color-mix(in srgb, var(--accent) 65%, transparent) 42%, transparent 72%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
   opacity: var(--ix-go, 0); }
-/* white soft-light glare is invisible on white paper: use it in dark theme only */
-:root[data-theme='dark'] .ix-fx [data-tilt]::after {
-  background: radial-gradient(circle at var(--ix-gx, 50%) var(--ix-gy, 50%), rgb(255 255 255 / .55), transparent 60%); mix-blend-mode: soft-light; }
+.ix-fx [data-tilt]::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(320px circle at var(--ix-gx, 50%) var(--ix-gy, 50%), color-mix(in srgb, var(--amber) 9%, transparent), transparent 70%);
+  opacity: var(--ix-go, 0); }
+.ix-fx [data-tilt] > * { position: relative; z-index: 1; }
 
 /* reveal trigger */
 [data-reveal] { text-decoration: underline dotted var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1.5px; cursor: help; border-radius: 2px; }

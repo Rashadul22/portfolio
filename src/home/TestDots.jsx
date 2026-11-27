@@ -47,7 +47,7 @@ export default function TestDots() {
     setHover(best)
   }
   return (
-    <section className="td" aria-labelledby="td-h">
+    <section className="td" aria-labelledby="td-h" data-tilt>
       <p className="eyebrow">Locked test set · every dot is one photograph</p>
       <h3 id="td-h" className="td-h">240 photographs, one score each</h3>
       <p className="td-sub">Each dot is a phone photograph from the locked test set, placed by how strongly the model says
