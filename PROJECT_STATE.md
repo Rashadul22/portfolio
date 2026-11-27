@@ -97,6 +97,23 @@
   WAITING ON USER: Namecheap DNS change (notes/DNS_STEPS_namecheap.md); DNS still points to Vercel 76.76.21.21.
   HOW TO DEPLOY NOW: build with VERCEL=1, copy dist/. into a clone of rashadul22.github.io, commit with the repo
   identity, push (TODO: GitHub Action to automate).
+- 25 Nov ~04:00 (user: "too plain, more 3D/interaction; make it the most unique"): BUILT 3D hero
+  (`HeroStage.jsx` + lazy `HeroPaper.jsx`, paperlab receipt-unroll with the synthetic 12-lead strip from `ecgStrip.js`;
+  poster image first, 3D loads on first interaction; scroll pays paper out; pointer tilt; "Photograph it" = flash +
+  scan line + 5 output labels, labelled as format only) and site-wide `parts/Interact/InteractLayer.jsx` (caliper
+  cursor on [data-caliper], magnetic buttons, tilt + glare cards, hover reveals of the paper forms in the exhibit
+  text, scramble-in numbers; SSR text always final). Lighthouse: mobile 94/100/100/100 (TBT 30 ms), desktop 100 x4.
+  (Auto-loading 3D on idle had dropped mobile perf to 67 -> moved to first interaction.)
+  Published: main = 4d90982; GitHub Pages repo commit 1b60f91 (verified serving the new hero via --resolve);
+  Claude preview https://claude.ai/artifact/XBnv5NPCUMmT3d7aa8gPLV (v2, relative-path build). rashadul.me still 402
+  until the Namecheap DNS change. Note: GitHub says the pages repo moved to Rashadul22/Rashadul22.github.io (case).
+- 25 Nov ~10:00 local: DNS CHANGED by me in Namecheap (user signed in in their Chrome; Claude in Chrome used):
+  A @ -> 185.199.108/109/110/111.153, CNAME www -> rashadul22.github.io. (Vercel records removed). Domain is the
+  GitHub Student Pack .me, Namecheap user rashadul6062, EXPIRES 15 Apr 2027. Google DNS already answers GitHub IPs;
+  GitHub Pages settings: "DNS check in progress", HTTPS certificate not yet issued -> tick "Enforce HTTPS" in
+  github.com/Rashadul22/Rashadul22.github.io/settings/pages once available.
+- LIVE: GitHub Pages serves https://rashadul.me with a valid certificate; Enforce HTTPS ON (http -> 301 https);
+  /thesis/ 200. Some resolvers (incl. this PC) still cached Vercel's 76.76.21.21 for a while after the change.
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 

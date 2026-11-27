@@ -6,6 +6,7 @@ import PullCord from './PullCord.jsx'
 import HeroStage from './HeroStage.jsx'
 import InteractLayer from './parts/Interact/InteractLayer.jsx'
 import PaperGrid from './parts/PaperGrid/PaperGrid.jsx'
+import TestDots from './TestDots.jsx'
 import RocExplorer from './parts/RocExplorer/RocExplorer.jsx'
 import ReportCard from './parts/ReportCard/ReportCard.jsx'
 import ExternalTests from './parts/MoreResearch/ExternalTests.jsx'
@@ -156,6 +157,7 @@ export default function Home() {
         <section id="research" className="wrap section" aria-labelledby="research-h">
           <h2 id="research-h">Research</h2>
           <ResearchCard item={research[0]} figure={<AurocChart />} />
+          <TestDots />
           <div className="roc-block" data-caliper="fig · ROC, locked test"><RocExplorer /></div>
           <div className="more-block" data-tilt><ReportCard /></div>
           <div className="more-block" data-caliper="fig · external tests"><ExternalTests /></div>

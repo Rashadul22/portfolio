@@ -243,3 +243,32 @@ html, body { overflow-x: clip; }
 .hs-poster { background: none; box-shadow: none; inset: 6% 26% auto; transform: rotate(-3deg); }
 .hs-poster img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: 0 24px 40px -22px rgb(0 0 0 / .45); max-height: 470px; object-fit: cover; object-position: top; }
 @media (max-width: 999px) { .hs-poster { inset: 4% 22% auto; } .hs-poster img { max-height: 340px; } }
+
+/* ---- 240 test photographs beeswarm ---- */
+.td { margin-top: 40px; padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.td-h { font: 400 26px/1.2 var(--serif); margin: 4px 0 8px; }
+.td-sub { color: var(--muted); max-width: 70ch; margin: 0 0 14px; }
+.td-wrap { position: relative; }
+.td svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.td-axis { stroke: var(--line); }
+.td-tick { font: 12px var(--mono); fill: var(--muted); }
+.td-dot { transition: r 160ms ease, opacity 200ms ease; }
+.td-dot.ab { fill: var(--accent); }
+.td-dot.nm { fill: var(--surface); stroke: var(--muted); stroke-width: 1.3; }
+.td-dot.wrong { opacity: .28; }
+.td-cut { stroke: var(--trace); stroke-width: 2; stroke-dasharray: 5 4; }
+.td svg.arm:not(.in) .td-dot { opacity: 0; transform: translateY(var(--fy)); }
+.td svg.arm.in .td-dot { animation: td-fall 700ms cubic-bezier(.2,.9,.3,1.2) var(--d) both; }
+@keyframes td-fall { from { opacity: 0; transform: translateY(var(--fy)); } }
+.td-tip { position: absolute; transform: translate(-50%, -125%); background: var(--text); color: var(--bg); font: 12.5px/1.4 var(--sans);
+  padding: 6px 9px; border-radius: 6px; pointer-events: none; white-space: nowrap; margin: 0; }
+.td-ctl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; margin-top: 10px; font-size: 15px; }
+.td-ctl input { width: 100%; accent-color: var(--trace); }
+.td-ctl p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 14.5px; }
+.td-note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+@media (max-width: 640px) { .td { padding: 18px; } }
+@media (prefers-reduced-motion: reduce) { .td svg:not(.in) .td-dot, .td svg.in .td-dot { opacity: 1; transform: none; animation: none; } }
+
+/* hero strip fray (mouse) */
+.fray-canvas { position: absolute; left: 0; top: 0; width: 100%; height: 60px; pointer-events: none; }
+.hero-trace.fray .trace { -webkit-mask-image: radial-gradient(circle 58px at var(--mx) var(--my), transparent 70%, #000 100%); mask-image: radial-gradient(circle 58px at var(--mx) var(--my), transparent 70%, #000 100%); }
