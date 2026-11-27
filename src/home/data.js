@@ -45,7 +45,7 @@ export const research = [
     finding:
       'On 240 held-out records, opened once after the labels were fixed, a plain ConvNeXt-Tiny reached a macro AUROC of 0.923 (95% CI 0.895–0.946); arrhythmia and conduction block remain the weak spot (sensitivity 0.42).',
     detail:
-      'Paper 1 releases the dataset (1,191 photographs, cardiologist labels) and a pre-specified evaluation protocol with external tests in Germany, Pakistan and the USA. Paper 2 generates a structured written report from the same photograph.',
+      'Paper 1 describes the dataset (1,191 photographs, cardiologist labels; not yet public, to be released with the paper) and a pre-specified evaluation protocol with external tests in Germany, Pakistan and the USA. Paper 2 generates a structured written report from the same photograph.',
     status: 'Two manuscripts in preparation for IEEE JBHI',
     links: [['Interactive thesis page', 'thesis/']],
   },

@@ -103,7 +103,7 @@ export const skills = [
   ['Programming', 'Python (primary), SQL, C++, LaTeX; Git, Jupyter, Google Colab'],
   ['Libraries', 'PyTorch, scikit-learn, XGBoost, CatBoost, Hugging Face Transformers, OpenCV, SHAP'],
   ['Methods', 'Multimodal late fusion, multi-label classification, class-imbalance handling, cross-dataset validation, explainability (SHAP, Grad-CAM)'],
-  ['Data', 'PhysioNet credentialed (MIMIC-IV, eICU), PTB-XL, NASA OSDR; primary clinical data collection, de-identification, reproducible public release'],
+  ['Data', 'PhysioNet credentialed (MIMIC-IV, eICU), PTB-XL, NASA OSDR; primary clinical data collection, de-identification, preparation for a future public release'],
 ]
 
 export const credentials = [
