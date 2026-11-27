@@ -7,7 +7,7 @@ export const person = {
   role: 'Research portfolio · Medical AI',
   tagline: 'Medical AI beyond clean digital data.',
   seeking: 'Seeking research assistant, MSc and PhD positions in medical AI and trustworthy machine learning.',
-  position: 'Research Assistant, NanoBio Technology Center, Daffodil International University',
+  position: 'Research Assistant, NanoBio Technology Center, Daffodil International University (since May 2026)',
   affiliation: 'B.Sc. Computer Science and Engineering, Daffodil International University, Dhaka (2026)',
   intro:
     'I study how machine learning can extract reliable clinical information from imperfect medical records: smartphone photographs of paper 12-lead ECGs, with a locked test set, robustness tests and external evaluation.',

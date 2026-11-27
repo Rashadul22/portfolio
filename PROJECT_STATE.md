@@ -123,6 +123,11 @@
   Lighthouse mobile 94/100/100/100, desktop 100 x4. LIVE on https://rashadul.me (main e6430a5, pages 2540b3b).
 - DEPLOY (current): build `VERCEL=1 npm run build`, copy dist/. into the clone of Rashadul22/Rashadul22.github.io
   (keep CNAME, README; add .nojekyll, 404.html), commit with the repo identity, push. Pages updates in ~1 min.
+- 27 Nov (user): CGPA removed from the site (HSC/SSC GPA and final-project A+ kept); contact email = university
+  islam15-6062@s.diu.edu.bd (switch back to the personal Gmail when the university address expires; it is in
+  src/content.js profile.email and src/home/data.js). Added current position "Research Assistant, NanoBio
+  Technology Center, Daffodil International University" (hero, About, JSON-LD); no start date given by the user.
+  Live (pages 702f716).
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 

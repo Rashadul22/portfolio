@@ -12,7 +12,7 @@ export default function About() {
           <ul className="sx-edu">
             <li>
               <strong>Research Assistant</strong>
-              <span className="sx-meta">NanoBio Technology Center, Daffodil International University, Dhaka</span>
+              <span className="sx-meta">NanoBio Technology Center, Daffodil International University, Dhaka · May 2026 – present</span>
               <ul><li>Machine learning for medical data, with Dr. Md. Ali Hossain (Director)</li></ul>
             </li>
           </ul>
