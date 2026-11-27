@@ -128,6 +128,13 @@
   src/content.js profile.email and src/home/data.js). Added current position "Research Assistant, NanoBio
   Technology Center, Daffodil International University" (hero, About, JSON-LD); start May 2026 (user, 27 Nov).
   Live (pages 702f716).
+- 27 Nov: USER PREFERENCE: do NOT highlight the Research Assistant role (small centre post; he wants MSc/PhD and
+  research collaborations). Lead with "Open to MSc/PhD and research collaborations on medical data". RA only as a
+  plain Experience entry (site About, LinkedIn Experience). LinkedIn updated by me in his Chrome (his yes): cover
+  (linkedin/linkedin_cover_1584x396.png), headline, About, top skills (ML, Medical Imaging, PyTorch, AI, DSA),
+  Experience RA May 2026-present (share skipped, notify off), website https://rashadul.me. Not done: name change
+  (verified badge risk), custom URL (breaks links), Featured, Publications, Organizations. Adding a position makes
+  LinkedIn overwrite the headline: re-check after any new position.
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 
