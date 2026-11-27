@@ -114,6 +114,15 @@
   github.com/Rashadul22/Rashadul22.github.io/settings/pages once available.
 - LIVE: GitHub Pages serves https://rashadul.me with a valid certificate; Enforce HTTPS ON (http -> 301 https);
   /thesis/ 200. Some resolvers (incl. this PC) still cached Vercel's 76.76.21.21 for a while after the change.
+- 27 Nov: user pasted outside AI advice (one block was about a different person, a civil engineer: ignored).
+  Adopted only what was new and fits: data-born visual + mouse-reactive hero strip. Built `TestDots.jsx`
+  (240 locked-test photographs as a beeswarm on a log-odds axis, filled = cardiologist abnormal, slider cut-off,
+  hover tooltip; data src/home/test_dots.json = shuffled [score, abnormal, n findings], no identifiers, from saved
+  predictions) and the hero strip "fray" (canvas particles + CSS mask around the pointer, fine pointer only).
+  Rejected again: count-up numbers, ECG->heart particle morph, pinned GSAP/Lenis scroll (all were in the old site).
+  Lighthouse mobile 94/100/100/100, desktop 100 x4. LIVE on https://rashadul.me (main e6430a5, pages 2540b3b).
+- DEPLOY (current): build `VERCEL=1 npm run build`, copy dist/. into the clone of Rashadul22/Rashadul22.github.io
+  (keep CNAME, README; add .nojekyll, 404.html), commit with the repo identity, push. Pages updates in ~1 min.
 - NEXT IDEA (not built): hero rhythm strip printed as a paperlab thermal "receipt" unrolling from the ECG roll.
 - Screenshot trick: `chrome --headless=new --window-size=1440,1400 --virtual-time-budget=5000 --screenshot=...`.
 

@@ -5,7 +5,7 @@ export const profile = {
   name: 'Md Rashadul Islam',
   role: 'AI Researcher',
   location: 'Uttara, Dhaka, Bangladesh',
-  email: 'rashadulislam225@gmail.com',
+  email: 'islam15-6062@s.diu.edu.bd',
   domain: 'rashadul.me',
   links: {
     github: 'https://github.com/Rashadul22',
@@ -30,7 +30,6 @@ export const education = [
     place: 'Daffodil International University, Dhaka',
     period: 'Jul 2022 – Jun 2026',
     details: [
-      'CGPA 3.06 / 4.00 (148 credits) · Major GPA 3.17 (113 credits)',
       'Final-year project grade A+ (4.00 / 4.00)',
       'Thesis supervisor: Dr. Md. Ali Hossain, Associate Professor and Director, NanoBio Technology Center, DIU',
     ],

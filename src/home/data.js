@@ -10,9 +10,9 @@ export const person = {
   affiliation: 'B.Sc. Computer Science and Engineering, Daffodil International University, Dhaka (2026)',
   intro:
     'I study how machine learning can extract reliable clinical information from imperfect medical records: smartphone photographs of paper 12-lead ECGs, with a locked test set, robustness tests and external evaluation.',
-  email: 'rashadulislam225@gmail.com',
+  email: 'islam15-6062@s.diu.edu.bd',
   links: [
-    ['Email', 'mailto:rashadulislam225@gmail.com'],
+    ['Email', 'mailto:islam15-6062@s.diu.edu.bd'],
     ['Google Scholar', 'https://scholar.google.com/citations?user=w472eK4AAAAJ&hl=en'],
     ['arXiv', 'https://arxiv.org/search/?searchtype=author&query=Rashadul+Islam'],
     ['GitHub', 'https://github.com/Rashadul22'],
